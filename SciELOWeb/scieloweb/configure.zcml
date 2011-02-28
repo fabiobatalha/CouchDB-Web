@@ -1,75 +1,65 @@
 <configure xmlns="http://pylonshq.com/pyramid">
 
+  <!-- this must be included for the view declarations to work -->
   <include package="pyramid_zcml" />
 
-  <!-- Home -->
-  <!--
   <route
-    name="home"
-    pattern="/"
-    view="scieloweb.views.my_view"
-    renderer="scieloweb:templates/mytemplate.pt"
-  />
-  -->
-  
+     name="home"
+     pattern="/"     
+     view=".views.my_view"
+     renderer="templates/mytemplate.pt"
+     />
+
+  <static
+     name="static"
+     path="static"
+     />
+
   <!-- Alphabetic -->
-  <!--
   <route
-    name="alphabetic"
-    pattern="/sci_alphabetic"
-    view="scieloweb.views.sci_alphabetic"
-    renderer="scieloweb:templates/mytemplate.pt"
+     name="alphabetic"
+     pattern="/sci_alphabetic"
+     view=".views.sci_alphabetic"
+     renderer="scieloweb:templates/mytemplate.pt"
   />
-  -->
-  
+ 
   <!-- Serial -->
-  <!--
   <route
     name="serial"
     pattern="/sci_serial"
     view="scieloweb.views.sci_serial"
     renderer="scieloweb:templates/mytemplate.pt"
   />
-  -->
 
   <!-- Issues -->
-  <!--
   <route
     name="issues"
     pattern="/sci_issues"
     view="scieloweb.views.sci_issues"
     renderer="scieloweb:templates/mytemplate.pt"
   />
-  -->
   
   <!-- IssueToc -->
-  <!--
   <route
     name="issuetoc"
     pattern="/sci_issuetoc"
-    view="scieloweb.views.sci_issuetoc"    
+    view="scieloweb.views.sci_issuetoc"
     renderer="scieloweb:templates/mytemplate.pt"
   />
-  -->
   
   <!-- Abstract -->
-  <!--
   <route
     name="abstract"
     pattern="/sci_abstract"
     view="scieloweb.views.sci_abstract"
     renderer="scieloweb:templates/mytemplate.pt"
   />
-  -->
   
-    <!-- Arttext -->
-  <!--
+  <!-- Arttext -->
   <route
     name="arttext"
     pattern="/sci_arttext"
     view="scieloweb.views.sci_arttext"
     renderer="scieloweb:templates/mytemplate.pt"
   />
-  -->
-
 </configure>

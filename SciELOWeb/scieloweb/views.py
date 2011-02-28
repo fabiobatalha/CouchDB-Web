@@ -5,15 +5,9 @@ from pyramid.url import route_url
 from pyramid.httpexceptions import HTTPFound
 from pyramid.renderers import get_renderer
 
-#from couchdbkit import Server
-#from couchdbkit.exceptions import ResourceNotFound
-
-from scieloweb import settings
-
 def my_view(request):
-    main = get_renderer('scieloweb:templates/mytemplate.pt').implementation()
-    return {'main':main}
-
+    return {'project':'SciELOWeb'}
+    
 def sci_home(request):
     return Response('Home')
 

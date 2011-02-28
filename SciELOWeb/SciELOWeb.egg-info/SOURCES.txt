@@ -15,9 +15,9 @@ SciELOWeb.egg-info/requires.txt
 SciELOWeb.egg-info/top_level.txt
 scieloweb/__init__.py
 scieloweb/resources.py
+scieloweb/settings.py
 scieloweb/tests.py
 scieloweb/views.py
-scieloweb/settings.py
 scieloweb/static/favicon.ico
 scieloweb/static/footerbg.png
 scieloweb/static/headerbg.png
