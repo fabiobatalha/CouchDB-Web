@@ -5,15 +5,8 @@ from pyramid.url import route_url
 from pyramid.httpexceptions import HTTPFound
 from pyramid.renderers import get_renderer
 
-from couchdbkit import Server
-from couchdbkit.exceptions import ResourceNotFound
-
-import urllib2
-import json
-import deform
-import Image
-import StringIO
-import os
+#from couchdbkit import Server
+#from couchdbkit.exceptions import ResourceNotFound
 
 from scieloweb import settings
 
