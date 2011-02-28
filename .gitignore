@@ -1,0 +1,4 @@
+env
+app
+*.pyc
+scielo3-env/

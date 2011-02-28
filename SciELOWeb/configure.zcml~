@@ -1,0 +1,83 @@
+<configure xmlns="http://pylonshq.com/pyramid">
+
+  <include package="pyramid_zcml" />
+
+  <!-- Home -->
+  <!--
+  <route
+    name="home"
+    pattern="/"
+    view="scieloweb.views.views.my_view"
+    renderer="scielobooks:templates/mytemplate.pt"
+  />
+  -->
+  <!-- Cover -->
+  <route
+    name="cover"
+    pattern="/id/{sbid}/cover/{size}/cover.jpeg"
+    view="scielobooks.views.views.cover"
+  />
+  <!-- Books Details -->
+  <route
+    name="details_book"
+    pattern="/id/{sbid}"
+    view="scielobooks.views.views.details_book"
+    renderer="scielobooks:templates/book_details.pt"
+  />
+  <!-- Chapter details -->
+  <route
+    name="details_chapter"
+    pattern="/id/{sbid}/{chapter}"
+    view="scielobooks.views.views.details_chapter"
+    renderer="scielobooks:templates/chapter_details.pt"
+  />
+  <!-- Viewer pdf -->
+  <route
+    name="pdf_viewer"
+    pattern="/id/{sbid}/{chapter}/pdf/view"
+    view="scielobooks.views.views.pdf_book_viewer"
+    renderer="scielobooks:templates/pdfviewer_template.pt"
+  />
+  <!-- Downloads -->
+  <route
+    name="download"
+    pattern="/id/{sbid}/{chapter}/{type}/{name}.{ext}"
+    view="scielobooks.views.views.download"
+    renderer="scielobooks:templates/download_template.pt"
+  />
+  <!-- ISBN Search -->
+  <route
+    name="isbn"
+    pattern="/isbn/{isbn_value}"
+    view="scielobooks.views.views.isbn_search"
+    renderer="scielobooks:templates/mytemplate.pt"
+  />
+  <!-- Images -->
+  <route
+    name="images"
+    pattern="/id/{sbid}/images"
+    view="scielobooks.views.views.images"
+    renderer="scielobooks:templates/mytemplate.pt"
+  />
+  <!-- Multimedia -->
+  <route
+    name="multimedia"
+    pattern="id/{sbid}/multimedia"
+    view="scielobooks.views.views.multimedia"
+    renderer="scielobooks:templates/mytemplate.pt"
+  />
+
+  <!-- Pdf book route -->
+  <route
+    name="books_pdf"
+    pattern="/books/{sbid}/pdf/{part}.pdf"
+  />
+
+  <!--Experimental Views Starts Here!!! -->
+  <route
+    name="browsing_all"
+    pattern="/id/browsing/"
+    view="scielobooks.views.views.browsing_all"
+    renderer="scielobooks:templates/all_template.pt"
+  />
+</configure>
