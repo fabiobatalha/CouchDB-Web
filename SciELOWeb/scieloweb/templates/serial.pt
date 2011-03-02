@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<p metal:use-macro="main.macros['master']">
+    <div class="leftcontent" metal:fill-slot="leftcontent">
+        <div class="box">
+            <div class="title">Journal Tools</div>
+            <ul>
+                <li><a href="#">journal home</a></li>
+                <li><a href="#">about the journal</a></li>
+                <li><a href="#">editorial board</a></li>
+                <li><a href="#">instructions to authors</a></li>
+                <li><a href="#">subscription</a></li>
+                <li><a href="#">statistics</a></li>
+                <li><a href="#">submission on-line</a></li>
+            </ul>
+        </div>
+    </div>    
+    <div class="middle" metal:fill-slot="middle">
+        <div class="serial_logo">
+            <img tal:attributes="src '/static/images/revistas/'+document.rows[0].doc.v68[0]._+'/glogo.gif'" />
+        </div>
+        <div class="search">
+            <h2 class="sectionHeading">Search</h2>
+            <form name="searchForm" action="http://www.scielo.br/cgi-bin/wxis.exe/iah/" method="post">
+                <input value="iah/iah.xis" name="IsisScript" type="hidden" />
+                <input value="i" name="lang" type="hidden" />
+                <input value="article^dlibrary" name="base" type="hidden" />
+                <input value="extSearch" name="nextAction" type="hidden" />
+                <input id="textEntry1" name="exprSearch" class="expression midium defaultValue" value="Enter one or more words" onfocus="clearDefault('textEntry1', 'expression midium'); this.value= (this.value=='Enter one or more words')? '' : this.value" onblur="clearDefault('textEntry1', 'expression midium defaultValue'); this.value= (this.value=='')? 'Enter one or more words' : this.value" type="text" />
+                <select class="inputText mini" name="indexSearch">
+                    <option selected="selected" value="^nTo^pTodos os índices^eTodos los indices^iAll indexes^d*^xTO ^yFULINV">All indexes</option>
+                    <option value="^nTi^pPalavras do título^ePalabras del título^iTitle words^xTI ^yPREINV^uTI_^mTI_">Title</option>
+                    <option value="^nAu^pAutor^eAutor^iAuthor^xAU ^yPREINV^uAU_^mAU_">Author</option>
+                    <option value="^nKw^pAssunto^eMateria^iSubject^xKW ^yPREINV^uKW_^mKW_">Subject</option>
+                </select>
+                <select class="inputText mini" name="limit">
+                    <option value="0001-3714">This Journal</option>
+                    <option value="">All Collection</option>
+                </select>
+                <input value="Search" name="submit" class="submit" type="submit" />
+            </form>
+        </div>
+        <h4>Publication of:</h4>
+        <span tal:content="document.rows[0].doc.v480[0]._" />
+        <h4>Mission: </h4>
+        <span tal:content="document.rows[0].doc.v901[0]._" />
+        <!-- Verificar funcionamento do tal:condition, o v710 nem sempre existe e quando não existe da erro.
+        <h4>New Title: </h4>
+        <a href="#" tal:condition="document.rows[0].doc.v710" tal:attributes="href '/sci_serial/'+document.rows[0].doc.v400[0]._" tal:content="document.rows[0].doc.v710[0]._" />
+        -->
+        <div class="spacer"></div>
+        <div class="highlights">
+            <div class="title">Press Releases</div>
+            <ul>
+                <li>item1</li>
+                <li>item2</li>
+                <li>item3</li>
+                <li>item4</li>
+            </ul>
+        </div>
+        <div class="highlights">
+            <div class="title">Last Articles</div>
+            <ul>
+                <li>item1</li>
+                <li>item2</li>
+                <li>item3</li>
+                <li>item4</li>
+            </ul>
+        </div>
+        <div class="spacer"></div>
+    </div>
+</p>

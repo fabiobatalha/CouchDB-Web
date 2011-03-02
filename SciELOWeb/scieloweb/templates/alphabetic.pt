@@ -1,0 +1,9 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<p metal:use-macro="main.macros['master']">
+    <div class="middle" metal:fill-slot="middle">
+        <h3>Current Titles</h3>
+        <ul>
+            <li tal:repeat="title document.rows"> <a href="#" tal:attributes="href '/sci_serial/'+title.doc.v400[0]._" tal:content="title.doc.v150[0]._" /> </li>
+        </ul>
+    </div>
+</p>

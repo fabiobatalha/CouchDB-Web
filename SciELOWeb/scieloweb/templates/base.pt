@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:tal="http://xml.zope.org/namespaces/tal"
+  xmlns:metal="http://xml.zope.org/namespaces/metal"
+  metal:define-macro="master">
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+      <title tal:content="settings.identity.title">SciELO Site</title>
+      <link rel="stylesheet" href="/static/css/styles.css" type="text/css" media="screen"></link>
+    </head>
+    <body>
+      <div class="container">
+	<div class="top">
+            <div class="identity">
+                <div class="left"><img src="/static/images/logo.gif" /></div>
+                <div class="right">
+                    <a href="#?lang=pt">português</a> | <a href="#?lang=en">inglês</a> | <a href="#?lang=es">español</a>
+                </div>
+            </div>
+            <div class="spacer"></div>
+            <div class="menubar">
+                <ul>
+                    <li><a href="/">home</a></li>
+                    <li><a href="#">jounals evaluation</a></li>
+                    <li><a href="#">help</a></li>
+                    <li><a href="#">about</a></li>
+                    <li><a href="#">team</a></li>
+                </ul>
+            </div>
+            <div class="spacer"></div>
+	</div>
+	<div class="content">
+            <div class="left">
+                <div class="box">
+                    <div class="title">serial browsing</div>
+                    <ul>
+                        <li><a href="/sci_alphabetic">alphabetic list</a></li>
+                        <li><a href="#">subject list</a></li>
+                        <li><a href="#">search form</a></li>
+                    </ul>
+                </div>
+                <div class="box">
+                    <div class="title">article browsing</div>
+                    <ul>
+                        <li><a href="#">author index</a></li>
+                        <li><a href="#">subject index</a></li>
+                        <li><a href="#">search form</a></li>
+                    </ul>
+                </div>
+                <div class="box">
+                    <div class="title">reports</div>
+                    <ul>
+                        <li><a href="#">site usage</a></li>
+                        <li><a href="#">journal citation</a></li>
+                        <li><a href="#">co-authors</a></li>
+                    </ul>
+                </div>
+		<div class="leftcontent" metal:define-slot="leftcontent"></div><!--/container -->
+            </div>
+            <div class="middle" metal:define-slot="middle"></div><!--/container -->
+            <div class="spacer"></div>
+        </div>
+        <div class="spacer"></div>
+        <div class="bottom">
+            <b>SciELO - Scientific Electronic Library Online</b> <br/>
+            FAPESP - BIREME<br/>
+            Rua Dr. Diogo de Farias, 1087 conj. 810 - Vila Clementino<br/>
+            04037-003 São Paulo SP - Brazil - Brasil<br/>
+            Phone: +55 11 3369-4080<br/>
+            scielo@scielo.org
+        </div>        
+      </div>
+    </body>
+</html>
