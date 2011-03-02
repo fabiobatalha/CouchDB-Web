@@ -5,17 +5,32 @@ from pyramid.url import route_url
 from pyramid.httpexceptions import HTTPFound
 from pyramid.renderers import get_renderer
 
+import urllib2
+import pdb
+import json
+
+from scieloweb import settings
+
 def my_view(request):
     return {'project':'SciELOWeb'}
     
 def sci_home(request):
-    return Response('Home')
+    main = get_renderer('scieloweb:templates/base.pt').implementation()
+    
+    return {'settings': settings.WS_CONFIG,
+            'main': main}    
 
 def sci_alphabetic(request):
-    return Response('Alphabetic')
+    result = urllib2.urlopen(settings.COUCHDB_VIEWS["sci_alphabetic"]);
+    main = get_renderer('scieloweb:templates/base.pt').implementation()
+    
+    return {'settings': settings.WS_CONFIG,
+            'document': json.loads(result.read()),
+            'main': main}
 
 def sci_serial(request):
-    return Response('Serial')
+    result = urllib2.urlopen(settings.COUCHDB_VIEWS["sci_serial"]);
+    return Response(result.read())
 
 def sci_issues(request):
     return Response('Issues')

@@ -6,8 +6,8 @@
   <route
      name="home"
      pattern="/"     
-     view=".views.my_view"
-     renderer="templates/mytemplate.pt"
+     view=".views.sci_home"
+     renderer="templates/home.pt"
      />
 
   <static
@@ -20,7 +20,7 @@
      name="alphabetic"
      pattern="/sci_alphabetic"
      view=".views.sci_alphabetic"
-     renderer="scieloweb:templates/mytemplate.pt"
+     renderer="templates/alphabetic.pt"
   />
  
   <!-- Serial -->
