@@ -28,9 +28,15 @@ def sci_alphabetic(request):
             'document': json.loads(result.read()),
             'main': main}
 
-def sci_serial(request):
-    result = urllib2.urlopen(settings.COUCHDB_VIEWS["sci_serial"]);
-    return Response(result.read())
+def sci_serial(request):  
+    pidval = request.matchdict['pid']
+    
+    result = urllib2.urlopen(settings.COUCHDB_VIEWS["sci_serial"].format(pid=pidval));
+    main = get_renderer('scieloweb:templates/base.pt').implementation()
+    
+    return {'settings': settings.WS_CONFIG,
+            'document': json.loads(result.read()),
+            'main': main}
 
 def sci_issues(request):
     return Response('Issues')

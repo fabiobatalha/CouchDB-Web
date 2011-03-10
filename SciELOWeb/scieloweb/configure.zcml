@@ -26,9 +26,9 @@
   <!-- Serial -->
   <route
     name="serial"
-    pattern="/sci_serial"
-    view="scieloweb.views.sci_serial"
-    renderer="scieloweb:templates/mytemplate.pt"
+    pattern="/sci_serial/{pid}"
+    view=".views.sci_serial"
+    renderer="scieloweb:templates/serial.pt"
   />
 
   <!-- Issues -->

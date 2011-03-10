@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <p metal:use-macro="main.macros['master']">
-    <div class="leftcontent" metal:fill-slot="leftcontent">
+    <div class="journaltools" metal:fill-slot="journaltools">
         <div class="box">
             <div class="title">Journal Tools</div>
             <ul>
@@ -40,9 +40,10 @@
             </form>
         </div>
         <h4>Publication of:</h4>
-        <span tal:content="document.rows[0].doc.v480[0]._" />
+        <span tal:replace="document.rows[0].doc.v480[0]._" /> <br/>
+        <span tal:content="document.rows[0].doc.v35[0]._" /> version ISSN <span tal:condition="document.rows[0].doc.v935" tal:replace="document.rows[0].doc.v935[0]._" />
         <h4>Mission: </h4>
-        <span tal:content="document.rows[0].doc.v901[0]._" />
+        <span tal:replace="document.rows[0].doc.v901[0]._" />
         <!-- Verificar funcionamento do tal:condition, o v710 nem sempre existe e quando não existe da erro.
         <h4>New Title: </h4>
         <a href="#" tal:condition="document.rows[0].doc.v710" tal:attributes="href '/sci_serial/'+document.rows[0].doc.v400[0]._" tal:content="document.rows[0].doc.v710[0]._" />
