@@ -16,7 +16,7 @@
     </div>    
     <div class="middle" metal:fill-slot="middle">
         <div class="serial_logo">
-            <img tal:attributes="src '/static/images/revistas/'+document.rows[0].doc.v68[0]._+'/glogo.gif'" />
+            <img tal:attributes="src '/static/images/revistas/'+document.doc.rows[0].doc.v68[0]._+'/glogo.gif'" />
         </div>
         <div class="search">
             <h2 class="sectionHeading">Search</h2>
@@ -40,10 +40,10 @@
             </form>
         </div>
         <h4>Publication of:</h4>
-        <span tal:replace="document.rows[0].doc.v480[0]._" /> <br/>
-        <span tal:content="document.rows[0].doc.v35[0]._" /> version ISSN <span tal:condition="document.rows[0].doc.v935" tal:replace="document.rows[0].doc.v935[0]._" />
+        <span tal:replace="document.doc.rows[0].doc.v480[0]._" /> <br/>
+        <span tal:content="document.doc.rows[0].doc.v35[0]._" /> version ISSN <span tal:replace="document.doc.rows[0].doc.v935[0]._" />
         <h4>Mission: </h4>
-        <span tal:replace="document.rows[0].doc.v901[0]._" />
+        <span tal:replace="document.doc.rows[0].doc.v901[0]._" />
         <!-- Verificar funcionamento do tal:condition, o v710 nem sempre existe e quando não existe da erro.
         <h4>New Title: </h4>
         <a href="#" tal:condition="document.rows[0].doc.v710" tal:attributes="href '/sci_serial/'+document.rows[0].doc.v400[0]._" tal:content="document.rows[0].doc.v710[0]._" />
@@ -52,19 +52,13 @@
         <div class="highlights">
             <div class="title">Press Releases</div>
             <ul>
-                <li>item1</li>
-                <li>item2</li>
-                <li>item3</li>
-                <li>item4</li>
+                <li tal:repeat="article document.pressreleases.rows"> <a href="#" tal:attributes="href '/sci_arttext/'+article.value.pid" tal:content="article.value.article_title[0]._" /> </li>
             </ul>
         </div>
         <div class="highlights">
             <div class="title">Last Articles</div>
             <ul>
-                <li>item1</li>
-                <li>item2</li>
-                <li>item3</li>
-                <li>item4</li>
+                <li tal:repeat="article document.lastarticles.rows"> <a href="#" tal:attributes="href '/sci_arttext/'+article.value.pid" tal:content="article.value.article_title[0]._" /> </li>
             </ul>
         </div>
         <div class="spacer"></div>

@@ -8,7 +8,7 @@ function(doc) {
          subjects.push(doc.v441[i]["_"]);
      }
 
-     emit([doc.v980["0"]["_"], doc.v942[0]["_"]], {"collection":doc.v980["0"]["_"],
+     emit(doc.v942[0]["_"], {"collection":doc.v980["0"]["_"],
          "issn":doc.v400[0]["_"],
          "title": doc.v100[0]["_"],
          "subject": subjects,

@@ -30,12 +30,21 @@ def sci_alphabetic(request):
 
 def sci_serial(request):  
     pidval = request.matchdict['pid']
+    #lang   = request.matchdict['lang']
     
-    result = urllib2.urlopen(settings.COUCHDB_VIEWS["sci_serial"].format(pid=pidval));
+    result        = urllib2.urlopen(settings.COUCHDB_VIEWS["sci_serial"].format(pid=pidval));
+    pressreleases = urllib2.urlopen(settings.COUCHDB_QUERIES["journal_pressrelases"]);
+    lastarticles  = urllib2.urlopen(settings.COUCHDB_QUERIES["journal_lastarticles"]);
+    
+    document = {"doc": json.loads(result.read()),
+                "pressreleases": json.loads(pressreleases.read()),
+                "lastarticles": json.loads(lastarticles.read())
+                }
+    
     main = get_renderer('scieloweb:templates/base.pt').implementation()
     
     return {'settings': settings.WS_CONFIG,
-            'document': json.loads(result.read()),
+            'document': document,
             'main': main}
 
 def sci_issues(request):
