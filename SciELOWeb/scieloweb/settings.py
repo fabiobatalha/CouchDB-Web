@@ -14,8 +14,8 @@ IDENTIFICATION = { "title": "SciELO - Scientific Electronic Library On-line",
                    "address": "Rua Diogo de Farias, 1087 conj. 810 - Vila Clementino",
                    "cep": "04037-000",
                    "country": "Brasil",
-                   "state": "São Paulo",
-                   "city": "São Paulo",
+                   "state": "Sao Paulo",
+                   "city": "Sao Paulo",
                    "phone": "+ 55 11 3369-4080",
                    "fax": "+ 55 11 3369-4080",
                    "mail": "scielo@scielo.org"
@@ -29,8 +29,8 @@ COUCHDB_VIEWS = { "sci_alphabetic": DB_SERVER+DB_NAME+"/_design/couchdb/_view/ti
                   "sci_arttext": DB_SERVER+DB_NAME+"/_design/couchdb/_view/article_id/{pid}?include_docs=true",
 }
 
-COUCHDB_QUERIES = { "journal_pressrelases": DB_SERVER+DB_NAME+"/_design/couchdb/_view/article_pr?descending=true&limit="+str(LIMIT),
-                    "journal_lastarticles": DB_SERVER+DB_NAME+"/_design/couchdb/_view/article?descending=true&limit="+str(LIMIT)
+COUCHDB_QUERIES = { "journal_pressrelases": DB_SERVER+DB_NAME+"/_design/couchdb/_view/article_pr?descending=true&limit="+str(LIMIT)+"&lang=pt&startkey=[\"{pid}\",{brac}]&endkey=[\"{pid}\"]&descending=true",
+                    "journal_lastarticles": DB_SERVER+DB_NAME+"/_design/couchdb/_view/article?descending=true&limit="+str(LIMIT)+"&lang=pt&startkey=[\"{pid}\",{brac}]&endkey=[\"{pid}\"]&descending=true"
 }
 
 # Website Configurations

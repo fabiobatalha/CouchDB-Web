@@ -33,8 +33,8 @@ def sci_serial(request):
     #lang   = request.matchdict['lang']
     
     result        = urllib2.urlopen(settings.COUCHDB_VIEWS["sci_serial"].format(pid=pidval));
-    pressreleases = urllib2.urlopen(settings.COUCHDB_QUERIES["journal_pressrelases"]);
-    lastarticles  = urllib2.urlopen(settings.COUCHDB_QUERIES["journal_lastarticles"]);
+    pressreleases = urllib2.urlopen(settings.COUCHDB_QUERIES["journal_pressrelases"].format(pid=pidval,brac="{}"));
+    lastarticles  = urllib2.urlopen(settings.COUCHDB_QUERIES["journal_lastarticles"].format(pid=pidval,brac="{}"));
     
     document = {"doc": json.loads(result.read()),
                 "pressreleases": json.loads(pressreleases.read()),

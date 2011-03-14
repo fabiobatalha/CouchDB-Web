@@ -50,17 +50,17 @@
         -->
         <div class="spacer"></div>
         <div class="highlights">
-            <div class="title">Press Releases</div>
-            <ul>
-                <li tal:repeat="article document.pressreleases.rows"> <a href="#" tal:attributes="href '/sci_arttext/'+article.value.pid" tal:content="article.value.article_title[0]._" /> </li>
-            </ul>
-        </div>
-        <div class="highlights">
             <div class="title">Last Articles</div>
             <ul>
                 <li tal:repeat="article document.lastarticles.rows"> <a href="#" tal:attributes="href '/sci_arttext/'+article.value.pid" tal:content="article.value.article_title[0]._" /> </li>
             </ul>
         </div>
+        <div class="highlights">
+            <div class="title">Press Releases</div>
+            <ul>
+                <li tal:repeat="article document.pressreleases.rows"> <a href="#" tal:attributes="href '/sci_arttext/'+article.value.pid" tal:content="article.value.article_title[0]._" /> </li>
+            </ul>
+        </div>       
         <div class="spacer"></div>
     </div>
 </p>
