@@ -3,7 +3,7 @@
     <div class="middle" metal:fill-slot="middle">
         <h3>Current Titles</h3>
         <ul>
-            <li tal:repeat="title document.rows"> <a href="#" tal:attributes="href '/sci_serial/'+title.doc.v400[0]._" tal:content="title.doc.v150[0]._" /> </li>
+            <li tal:repeat="doc document.rows"> <a href="#" tal:attributes="href '/sci_serial/'+doc['issn']" tal:content="doc['title']" /> (<span tal:replace="doc['issues_total']"></span>)</li> 
         </ul>
     </div>
 </p>

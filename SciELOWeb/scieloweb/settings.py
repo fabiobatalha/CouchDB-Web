@@ -2,6 +2,7 @@ DEBUG     = True
 DB_SERVER = 'http://teste.webservices.scielo.org/'
 DB_NAME   = 'scielobr2'
 LIMIT     = 10
+LANG      = 'pt'
 
 COVER_SIZES = {
     # id:(width, height),
@@ -30,7 +31,9 @@ COUCHDB_VIEWS = { "sci_alphabetic": DB_SERVER+DB_NAME+"/_design/couchdb/_view/ti
 }
 
 COUCHDB_QUERIES = { "journal_pressrelases": DB_SERVER+DB_NAME+"/_design/couchdb/_view/article_pr?descending=true&limit="+str(LIMIT)+"&lang=pt&startkey=[\"{pid}\",{brac}]&endkey=[\"{pid}\"]&descending=true",
-                    "journal_lastarticles": DB_SERVER+DB_NAME+"/_design/couchdb/_view/article?descending=true&limit="+str(LIMIT)+"&lang=pt&startkey=[\"{pid}\",{brac}]&endkey=[\"{pid}\"]&descending=true"
+                    "journal_lastarticles": DB_SERVER+DB_NAME+"/_design/couchdb/_view/article?descending=true&limit="+str(LIMIT)+"&lang=pt&startkey=[\"{pid}\",{brac}]&endkey=[\"{pid}\"]&descending=true",
+                    "issues_count_pid":     DB_SERVER+DB_NAME+"/_design/couchdb/_view/issue_count?key=[\"{pid}\"]&group=true",
+                    "issues_count_all":     DB_SERVER+DB_NAME+"/_design/couchdb/_view/issue_count?group=true",
 }
 
 # Website Configurations

@@ -21,11 +21,33 @@ def sci_home(request):
             'main': main}    
 
 def sci_alphabetic(request):
-    result = urllib2.urlopen(settings.COUCHDB_VIEWS["sci_alphabetic"]);
+    query1    = urllib2.urlopen(settings.COUCHDB_VIEWS["sci_alphabetic"])
+    query2    = urllib2.urlopen(settings.COUCHDB_QUERIES["issues_count_all"])
+    document  = [];
+    docjson   = json.loads(query1.read())
+    iss_count = json.loads(query2.read())
+    issues_total = {}
+    # converting couchdb return to a simple dictionary
+    
+    for rows2 in iss_count['rows']:
+        issues_total[rows2['key']] = rows2['value']
+        
+    
+    for rows in docjson['rows']:
+        rows2 = []
+        doc = {}
+        doc['title'] =        rows['doc']['v100'][0]['_']
+        doc['issn'] =         rows['doc']['v400'][0]['_']
+        doc['issn2'] =        rows['doc']['v935'][0]['_']
+        doc['issn2_type'] =   rows['doc']['v35'][0]['_']
+        if issues_total['1678-9741']:
+            doc['issues_total'] = issues_total[doc['issn']]
+        document.append(doc);
+    
     main = get_renderer('scieloweb:templates/base.pt').implementation()
     
     return {'settings': settings.WS_CONFIG,
-            'document': json.loads(result.read()),
+            'document': {"rows":document},
             'main': main}
 
 def sci_serial(request):  
