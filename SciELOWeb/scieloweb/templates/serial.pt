@@ -15,6 +15,18 @@
         </div>
     </div>    
     <div class="middle" metal:fill-slot="middle">
+        <div class="navegation">
+            <div class="title">issues list</div>
+            <div class="options">
+                <ul>
+                    <li><a href="#" tal:attributes="href '/sci_issues/'+document.doc.rows[0].doc.v935[0]._">all</a></li>
+                    <li><a href="#">previous</a></li>
+                    <li><a href="#">current</a></li>
+                    <li><a href="#">next</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="spacer"></div>
         <div class="serial_logo">
             <img tal:attributes="src '/static/images/revistas/'+document.doc.rows[0].doc.v68[0]._+'/glogo.gif'" />
         </div>
@@ -41,13 +53,15 @@
         </div>
         <h4>Publication of:</h4>
         <span tal:replace="document.doc.rows[0].doc.v480[0]._" /> <br/>
-        <span tal:content="document.doc.rows[0].doc.v35[0]._" /> version ISSN <span tal:replace="document.doc.rows[0].doc.v935[0]._" />
+        <span tal:replace="document.doc.rows[0].doc.v35[0]._" /> version ISSN <span tal:replace="document.doc.rows[0].doc.v935[0]._" />
         <h4>Mission: </h4>
         <span tal:replace="document.doc.rows[0].doc.v901[0]._" />
         <!-- Verificar funcionamento do tal:condition, o v710 nem sempre existe e quando não existe da erro.
         <h4>New Title: </h4>
         <a href="#" tal:condition="document.rows[0].doc.v710" tal:attributes="href '/sci_serial/'+document.rows[0].doc.v400[0]._" tal:content="document.rows[0].doc.v710[0]._" />
         -->
+        <h4>Place: </h4>
+        <span tal:repeat="address document.doc.rows[0].doc.v63"> <span tal:content="address._" /><br/></span>
         <div class="spacer"></div>
         <div class="highlights">
             <div class="title">Last Articles</div>

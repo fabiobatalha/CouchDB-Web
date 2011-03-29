@@ -1,9 +1,22 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <p metal:use-macro="main.macros['master']">
     <div class="middle" metal:fill-slot="middle">
-        <h3>Current Titles</h3>
+        <div class="search">
+            <h2 class="sectionHeading">Journals Search</h2>
+            <form name="searchForm" action="http://www.scielo.br/cgi-bin/wxis.exe/iah/" method="post">
+                <input id="textEntry1" name="exprSearch" class="expression midium defaultValue" value="Enter one or more words" onfocus="clearDefault('textEntry1', 'expression midium'); this.value= (this.value=='Enter one or more words')? '' : this.value" onblur="clearDefault('textEntry1', 'expression midium defaultValue'); this.value= (this.value=='')? 'Enter one or more words' : this.value" type="text" />
+                <input value="Search" name="submit" class="submit" type="submit" />
+            </form>
+        </div>
+        
+        <h3>Current Titles - <span tal:replace="others.total_current"></span> serials</h3>
         <ul>
-            <li tal:repeat="doc document.rows"> <a href="#" tal:attributes="href '/sci_serial/'+doc['issn']" tal:content="doc['title']" /> (<span tal:replace="doc['issues_total']"></span>)</li> 
+            <li tal:repeat="doc document.rows.current"> <a href="#" tal:attributes="href '/sci_serial/'+doc['issn']" tal:content="doc['title']" /> - <span tal:replace="doc['issues_total']"></span> issues</li> 
         </ul>
+        <h3>Non-Current Titles - <span tal:replace="others.total_noncurrent"></span> serials</h3>
+        <ul>
+            <li tal:repeat="doc document.rows.noncurrent"> <a href="#" tal:attributes="href '/sci_serial/'+doc['issn']" tal:content="doc['title']" /> - <span tal:replace="doc['issues_total']"></span> issues</li> 
+        </ul>
+        <!--span tal:content="document.rows.current"></span-->
     </div>
 </p>

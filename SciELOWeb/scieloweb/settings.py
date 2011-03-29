@@ -1,6 +1,6 @@
 DEBUG     = True
 DB_SERVER = 'http://teste.webservices.scielo.org/'
-DB_NAME   = 'scielobr2'
+DB_NAME   = 'scielobr1'
 LIMIT     = 10
 LANG      = 'pt'
 
@@ -22,10 +22,10 @@ IDENTIFICATION = { "title": "SciELO - Scientific Electronic Library On-line",
                    "mail": "scielo@scielo.org"
 }
 
-COUCHDB_VIEWS = { "sci_alphabetic": DB_SERVER+DB_NAME+"/_design/couchdb/_view/title_id?include_docs=true",
+COUCHDB_VIEWS = { "sci_alphabetic": DB_SERVER+DB_NAME+"/_design/couchdb/_view/title?include_docs=true",
                   "sci_serial": DB_SERVER+DB_NAME+"/_design/couchdb/_view/title_id?include_docs=true&key=\"{pid}\"",
-                  "sci_issues": DB_SERVER+DB_NAME+"/_design/couchdb/_view/issues_id?include_docs=true",
-                  "sci_issuetoc": DB_SERVER+DB_NAME+"/_design/couchdb/_view/issues_id/{pid}?include_docs=true",
+                  "sci_issues": DB_SERVER+DB_NAME+"/_design/couchdb/_view/issue_id?include_docs=true&startkey=\"{pid}\\u9999\"&endkey=\"{pid}\"&descending=true",
+                  "sci_issuetoc": DB_SERVER+DB_NAME+"/_design/couchdb/_view/issue_id/{pid}?include_docs=true",
                   "sci_abstract": DB_SERVER+DB_NAME+"/_design/couchdb/_view/article_id/{pid}?include_docs=true",
                   "sci_arttext": DB_SERVER+DB_NAME+"/_design/couchdb/_view/article_id/{pid}?include_docs=true",
 }

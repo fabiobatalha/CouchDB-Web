@@ -34,9 +34,9 @@
   <!-- Issues -->
   <route
     name="issues"
-    pattern="/sci_issues"
-    view="scieloweb.views.sci_issues"
-    renderer="scieloweb:templates/mytemplate.pt"
+    pattern="/sci_issues/{pid}"
+    view=".views.sci_issues"
+    renderer="scieloweb:templates/issues.pt"
   />
   
   <!-- IssueToc -->
