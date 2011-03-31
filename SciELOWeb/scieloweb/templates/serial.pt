@@ -1,6 +1,9 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <p metal:use-macro="main.macros['master']">
     <div class="journaltools" metal:fill-slot="journaltools">
+        <div class="serial_logo">
+            <img tal:attributes="src '/static/images/revistas/'+document.serial.acron+'/glogo.gif'" width="200px" />
+        </div>        
         <div class="box">
             <div class="title">Journal Tools</div>
             <ul>
@@ -19,7 +22,7 @@
             <div class="title">issues list</div>
             <div class="options">
                 <ul>
-                    <li><a href="#" tal:attributes="href '/sci_issues/'+document.doc.rows[0].doc.v935[0]._">all</a></li>
+                    <li><a href="#" tal:attributes="href '/sci_issues/'+document.serial.pid">all</a></li>
                     <li><a href="#">previous</a></li>
                     <li><a href="#">current</a></li>
                     <li><a href="#">next</a></li>
@@ -27,9 +30,6 @@
             </div>
         </div>
         <div class="spacer"></div>
-        <div class="serial_logo">
-            <img tal:attributes="src '/static/images/revistas/'+document.doc.rows[0].doc.v68[0]._+'/glogo.gif'" />
-        </div>
         <div class="search">
             <h2 class="sectionHeading">Search</h2>
             <form name="searchForm" action="http://www.scielo.br/cgi-bin/wxis.exe/iah/" method="post">
@@ -52,16 +52,14 @@
             </form>
         </div>
         <h4>Publication of:</h4>
-        <span tal:replace="document.doc.rows[0].doc.v480[0]._" /> <br/>
-        <span tal:replace="document.doc.rows[0].doc.v35[0]._" /> version ISSN <span tal:replace="document.doc.rows[0].doc.v935[0]._" />
+        <span tal:replace="document.serial.publisher" /> <br/>
+        <span tal:replace="document.serial.issn_type" /> version ISSN <span tal:replace="document.serial.issn" />
         <h4>Mission: </h4>
-        <span tal:replace="document.doc.rows[0].doc.v901[0]._" />
-        <!-- Verificar funcionamento do tal:condition, o v710 nem sempre existe e quando não existe da erro.
+        <span tal:replace="document.serial.mission" />
         <h4>New Title: </h4>
-        <a href="#" tal:condition="document.rows[0].doc.v710" tal:attributes="href '/sci_serial/'+document.rows[0].doc.v400[0]._" tal:content="document.rows[0].doc.v710[0]._" />
-        -->
+        <a href="#" tal:attributes="href '/sci_serial/'+document.serial.issn_newtitle" tal:content="document.serial.newtitle" />
         <h4>Place: </h4>
-        <span tal:repeat="address document.doc.rows[0].doc.v63"> <span tal:content="address._" /><br/></span>
+        <span tal:repeat="address document.serial.address"> <span tal:content="address._" /><br/></span>
         <div class="spacer"></div>
         <div class="highlights">
             <div class="title">Last Articles</div>

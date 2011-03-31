@@ -1,6 +1,27 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <p metal:use-macro="main.macros['master']">
     <div class="middle" metal:fill-slot="middle">
+        <div class="search">
+            <h2 class="sectionHeading">Search</h2>
+            <form name="searchForm" action="http://www.scielo.br/cgi-bin/wxis.exe/iah/" method="post">
+                <input value="iah/iah.xis" name="IsisScript" type="hidden" />
+                <input value="i" name="lang" type="hidden" />
+                <input value="article^dlibrary" name="base" type="hidden" />
+                <input value="extSearch" name="nextAction" type="hidden" />
+                <input id="textEntry1" name="exprSearch" class="expression midium defaultValue" value="Enter one or more words" onfocus="clearDefault('textEntry1', 'expression midium'); this.value= (this.value=='Enter one or more words')? '' : this.value" onblur="clearDefault('textEntry1', 'expression midium defaultValue'); this.value= (this.value=='')? 'Enter one or more words' : this.value" type="text" />
+                <select class="inputText mini" name="indexSearch">
+                    <option selected="selected" value="^nTo^pTodos os índices^eTodos los indices^iAll indexes^d*^xTO ^yFULINV">All indexes</option>
+                    <option value="^nTi^pPalavras do título^ePalabras del título^iTitle words^xTI ^yPREINV^uTI_^mTI_">Title</option>
+                    <option value="^nAu^pAutor^eAutor^iAuthor^xAU ^yPREINV^uAU_^mAU_">Author</option>
+                    <option value="^nKw^pAssunto^eMateria^iSubject^xKW ^yPREINV^uKW_^mKW_">Subject</option>
+                </select>
+                <select class="inputText mini" name="limit">
+                    <option value="0001-3714">This Journal</option>
+                    <option value="">All Collection</option>
+                </select>
+                <input value="Search" name="submit" class="submit" type="submit" />
+            </form>
+        </div>        
         <h4>SciELO</h4>
         <p>	The Scientific Electronic Library Online - SciELO is an electronic library covering a selected collection of Brazilian scientific journals.</p>
         <p>The library is an integral part of a project being developed by FAPESP - Fundação de Amparo à Pesquisa do Estado de São Paulo, in partnership with BIREME - the Latin American and Caribbean Center on Health Sciences Information. Since 2002, the Project is also supported by CNPq - Conselho Nacional de Desenvolvimento Científico e Tecnológico.</p>

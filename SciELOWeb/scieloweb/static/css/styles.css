@@ -93,13 +93,9 @@ A:HOVER {
     font-size: 12px;
 }
 
-.middle ul {
-    
-}
-
-.middle .serial_logo {
-    width: 100%;
+.serial_logo {
     text-align: left;
+    margin-bottom: 10px;
 }
 
 .middle .navegation {
@@ -151,6 +147,9 @@ A:HOVER {
     box-shadow: 5px 5px 5px #888;    
 }
 
+.middle .navegation .options li .selected{
+    color: #FFFFFF;
+}
 .highlights {
     float: left;
     width: 40%;
@@ -188,4 +187,66 @@ A:HOVER {
     background-color: #DCDCDC;
     width: 100px;
     padding: 10px;
+}
+
+.articles_list li {
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 14px;
+    
+}
+
+.authors_list{
+    padding: 0px;
+    margin: 0px;
+}
+
+.authors_list li{
+    color: #212121;
+    float: left;
+    margin-left: 10px;
+    margin-bottom: 0px;
+    list-style: none;
+    padding: 0px;
+    font-weight: normal;
+    font-size: 12px;
+}
+
+.options_list {
+    padding: 0px;
+    margin: 0px;
+    margin-top: 10px;    
+}
+
+.options_list li {
+    font-size: 10px;
+    float: left;
+    list-style: none;
+    font-weight: normal;
+    margin-left: 20px;
+}
+
+.search {
+    background-color: #EEEEEE;
+    width: 500px;
+    margin-left:auto;
+    margin-right:auto;
+    padding: 10px;
+    padding-left: 20px;
+    margin-top: 0px;
+    -moz-box-shadow: 5px 5px 5px #888;
+    -webkit-box-shadow: 5px 5px 5px #888;
+    box-shadow: 5px 5px 5px #888;
+    border: 2px solid #FFFFFF;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    text-align: center;
+    
+}
+
+.search .sectionHeading{
+    text-align: left;
+    margin: 0px;
+    padding: 0px;   
+    
 }

@@ -42,9 +42,9 @@
   <!-- IssueToc -->
   <route
     name="issuetoc"
-    pattern="/sci_issuetoc"
-    view="scieloweb.views.sci_issuetoc"
-    renderer="scieloweb:templates/mytemplate.pt"
+    pattern="/sci_issuetoc/{pid}"
+    view=".views.sci_issuetoc"
+    renderer="scieloweb:templates/issuetoc.pt"
   />
   
   <!-- Abstract -->

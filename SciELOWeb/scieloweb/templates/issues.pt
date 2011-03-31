@@ -1,10 +1,13 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <p metal:use-macro="main.macros['master']">
     <div class="journaltools" metal:fill-slot="journaltools">
+        <div class="serial_logo">
+            <img tal:attributes="src '/static/images/revistas/'+document.serial.acron+'/glogo.gif'" width="200px"/>
+        </div>        
         <div class="box">
             <div class="title">Journal Tools</div>
             <ul>
-                <li><a href="#">journal home</a></li>
+                <li><a href="#" tal:attributes="href '/sci_serial/'+document.serial.issn">journal home</a></li>
                 <li><a href="#">about the journal</a></li>
                 <li><a href="#">editorial board</a></li>
                 <li><a href="#">instructions to authors</a></li>
@@ -19,7 +22,7 @@
             <div class="title">issues list</div>
             <div class="options">
                 <ul>
-                    <li><a href="#">all</a></li>
+                    <li class="selected">all</li>
                     <li><a href="#">previous</a></li>
                     <li><a href="#">current</a></li>
                     <li><a href="#">next</a></li>
@@ -27,9 +30,6 @@
             </div>
         </div>
         <div class="spacer"></div>
-        <div class="serial_logo">
-            <img tal:attributes="src '/static/images/revistas/'+document.journal.rows[0].doc.v68[0]._+'/glogo.gif'" />
-        </div>
         <div class="search">
             <h2 class="sectionHeading">Search</h2>
             <form name="searchForm" action="http://www.scielo.br/cgi-bin/wxis.exe/iah/" method="post">
@@ -61,12 +61,13 @@
                 <tr>
                     <th tal:content="year['year']">Ano</th>
                     <th tal:content="year['data'][0]['vol']">Vol</th>
-                    <span tal:repeat="num year['data']">
-                        <td><a href="#" tal:content="num['num']" /></td>
+                    <span tal:repeat="num python:sorted(year['data'], key=lambda issue: issue.pid)">
+                        <td><a href="#" tal:attributes="href '/sci_issuetoc/'+num['pid']" tal:content="num['num']" /></td>
                     </span>
+                    <!--td tal:content="year"></td-->
                 </tr>
             </span>    
         </table>
-        <!--span tal:repeat="year document.issues"><span tal:content="year" /></span-->
+        <!--span tal:content="document.raw_data"></span-->
     </div>
 </p>
