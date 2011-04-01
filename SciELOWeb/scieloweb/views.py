@@ -292,7 +292,93 @@ def sci_issuetoc(request):
             }
 
 def sci_arttext(request):
-    return Response('ArtText')
+    pidval = request.matchdict['pid']
+    issues_dict = {}
+    issn_newtitle = ''
+    new_title = ''
+    vol = ''
+    num = ''
+    year = ''
+    month = ''
+    
+    query1 = urllib2.urlopen(settings.COUCHDB_VIEWS["sci_serial"].format(pid=pidval[1:10]))
+    serialjson = json.loads(query1.read())
+    
+    # Creating serial dict just with relevant data
+    if serialjson['rows'][0]['doc'].has_key('v400'):
+        issn_newtitle = serialjson['rows'][0]['doc']['v400'][0]['_']
+        
+    if serialjson['rows'][0]['doc'].has_key('v710'):
+        new_title = serialjson['rows'][0]['doc']['v710'][0]['_']
+
+    serial = {  "pid": serialjson['rows'][0]['doc']['v935'][0]['_'],
+                "title": serialjson['rows'][0]['doc']['v150'][0]['_'],
+                "acron": serialjson['rows'][0]['doc']['v68'][0]['_'],
+                "publisher": serialjson['rows'][0]['doc']['v480'][0]['_'],
+                "issn_type": serialjson['rows'][0]['doc']['v35'][0]['_'],
+                "issn": serialjson['rows'][0]['doc']['v935'][0]['_'],
+                "mission": serialjson['rows'][0]['doc']['v901'][0]['_'],
+                "address": serialjson['rows'][0]['doc']['v63'],
+                "issn_newtitle": issn_newtitle,
+                "newtitle": new_title,
+                "vol": vol,
+                "num": num,
+                "year": year,
+                "month": month
+    }
+    
+    document = {"serial": serial,
+                }
+    
+    main = get_renderer('scieloweb:templates/base.pt').implementation()
+    
+    return {'settings': settings.WS_CONFIG,
+            'document': document,
+            'main': main
+            }
 
 def sci_abstract(request):
-    return Response('Abstract')
+    pidval = request.matchdict['pid']
+    issues_dict = {}
+    issn_newtitle = ''
+    new_title = ''
+    vol = ''
+    num = ''
+    year = ''
+    month = ''
+    
+    query1 = urllib2.urlopen(settings.COUCHDB_VIEWS["sci_serial"].format(pid=pidval[1:10]))
+    serialjson = json.loads(query1.read())
+    
+    # Creating serial dict just with relevant data
+    if serialjson['rows'][0]['doc'].has_key('v400'):
+        issn_newtitle = serialjson['rows'][0]['doc']['v400'][0]['_']
+        
+    if serialjson['rows'][0]['doc'].has_key('v710'):
+        new_title = serialjson['rows'][0]['doc']['v710'][0]['_']
+
+    serial = {  "pid": serialjson['rows'][0]['doc']['v935'][0]['_'],
+                "title": serialjson['rows'][0]['doc']['v150'][0]['_'],
+                "acron": serialjson['rows'][0]['doc']['v68'][0]['_'],
+                "publisher": serialjson['rows'][0]['doc']['v480'][0]['_'],
+                "issn_type": serialjson['rows'][0]['doc']['v35'][0]['_'],
+                "issn": serialjson['rows'][0]['doc']['v935'][0]['_'],
+                "mission": serialjson['rows'][0]['doc']['v901'][0]['_'],
+                "address": serialjson['rows'][0]['doc']['v63'],
+                "issn_newtitle": issn_newtitle,
+                "newtitle": new_title,
+                "vol": vol,
+                "num": num,
+                "year": year,
+                "month": month
+    }
+    
+    document = {"serial": serial,
+                }
+    
+    main = get_renderer('scieloweb:templates/base.pt').implementation()
+    
+    return {'settings': settings.WS_CONFIG,
+            'document': document,
+            'main': main
+            }

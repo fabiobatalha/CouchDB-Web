@@ -3,11 +3,14 @@
     <div class="journaltools" metal:fill-slot="journaltools">
         <div class="serial_logo">
             <img tal:attributes="src '/static/images/revistas/'+document.serial.acron+'/glogo.gif'" width="200px" />
-        </div>        
+        </div>
+        <div class="serial_header">
+            <span tal:replace="document.serial.issn_type" /> version: <span tal:replace="document.serial.issn" />
+        </div>
         <div class="box">
             <div class="title">Journal Tools</div>
             <ul>
-                <li><a href="#">journal home</a></li>
+                <li><a href="#" tal:attributes="href '/sci_serial/'+document.serial.issn">journal home</a></li>
                 <li><a href="#">about the journal</a></li>
                 <li><a href="#">editorial board</a></li>
                 <li><a href="#">instructions to authors</a></li>

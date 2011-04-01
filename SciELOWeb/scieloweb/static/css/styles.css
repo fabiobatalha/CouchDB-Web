@@ -95,6 +95,10 @@ A:HOVER {
 
 .serial_logo {
     text-align: left;
+}
+
+.serial_header {
+    font-size: 10px;
     margin-bottom: 10px;
 }
 
@@ -234,6 +238,7 @@ A:HOVER {
     padding: 10px;
     padding-left: 20px;
     margin-top: 0px;
+    margin-bottom: 20px;
     -moz-box-shadow: 5px 5px 5px #888;
     -webkit-box-shadow: 5px 5px 5px #888;
     box-shadow: 5px 5px 5px #888;

@@ -3,7 +3,10 @@
     <div class="journaltools" metal:fill-slot="journaltools">
         <div class="serial_logo">
             <img tal:attributes="src '/static/images/revistas/'+document.serial.acron+'/glogo.gif'" width="200px" />
-        </div>        
+        </div>
+        <div class="serial_header">
+            <span tal:replace="document.serial.issn_type" /> version: <span tal:replace="document.serial.issn" />
+        </div>
         <div class="box">
             <div class="title">Journal Tools</div>
             <ul>
@@ -63,7 +66,7 @@
                 </ul>
                 <div class="spacer"></div>
                 <ul class="options_list">
-                    <li><a href="#" tal:attributes="href '/sci_abstrac/'+article.pid">abstract</a></li>
+                    <li><a href="#" tal:attributes="href '/sci_abstract/'+article.pid">abstract</a></li>
                     <li><a href="#" tal:attributes="href '/sci_arttext/'+article.pid">full text</a></li>
                     <li><a href="#" tal:attributes="href '/sci_pdf/'+article.pid">pdf</a></li>
                 </ul>

@@ -50,16 +50,16 @@
   <!-- Abstract -->
   <route
     name="abstract"
-    pattern="/sci_abstract"
-    view="scieloweb.views.sci_abstract"
-    renderer="scieloweb:templates/mytemplate.pt"
+    pattern="/sci_abstract/{pid}"
+    view=".views.sci_abstract"
+    renderer="scieloweb:templates/abstract.pt"
   />
   
   <!-- Arttext -->
   <route
     name="arttext"
-    pattern="/sci_arttext"
-    view="scieloweb.views.sci_arttext"
-    renderer="scieloweb:templates/mytemplate.pt"
+    pattern="/sci_arttext/{pid}"
+    view=".views.sci_arttext"
+    renderer="scieloweb:templates/arttext.pt"
   />
 </configure>
