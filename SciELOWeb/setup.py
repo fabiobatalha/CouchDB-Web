@@ -6,7 +6,7 @@ here = os.path.abspath(os.path.dirname(__file__))
 README = open(os.path.join(here, 'README.txt')).read()
 CHANGES = open(os.path.join(here, 'CHANGES.txt')).read()
 
-requires = ['pyramid', 'pyramid_zcml', 'WebError']
+requires = ['pyramid', 'pyramid_zcml', 'WebError','Babel']
 
 setup(name='SciELOWeb',
       version='0.0',
@@ -33,5 +33,9 @@ setup(name='SciELOWeb',
       main = scieloweb:main
       """,
       paster_plugins=['pyramid'],
+      message_extractors = { '.': [
+             ('**.py',   'chameleon_python', None ),
+             ('**.pt',   'chameleon_xml', None ),
+             ]},
       )
 

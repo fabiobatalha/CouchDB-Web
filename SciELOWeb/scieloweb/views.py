@@ -4,6 +4,10 @@ from pyramid import exceptions
 from pyramid.url import route_url
 from pyramid.httpexceptions import HTTPFound
 from pyramid.renderers import get_renderer
+from pyramid.i18n import TranslationStringFactory, negotiate_locale_name, get_localizer
+
+
+_ = TranslationStringFactory('scieloweb')
 
 import urllib2
 import pdb
@@ -11,10 +15,24 @@ import json
 
 from scieloweb import settings
 
+def set_language(request):
+    if request.POST:
+        local_name = negotiate_locale_name(request)
+        resp = Response()
+        resp.headers = {'Location': request.referrer}
+        resp.status = '302'
+        resp.set_cookie('language', local_name)
+        return resp
+    else:
+        return HTTPInternalServerError()
+
 def my_view(request):
     return {'project':'SciELOWeb'}
     
 def sci_home(request):
+    locale_name = negotiate_locale_name(request) 
+    localizer = get_localizer(request)
+
     main = get_renderer('scieloweb:templates/base.pt').implementation()
     
     return {'settings': settings.WS_CONFIG,

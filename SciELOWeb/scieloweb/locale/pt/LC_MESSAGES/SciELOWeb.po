@@ -1,0 +1,31 @@
+# Portuguese translations for SciELOWeb.
+# Copyright (C) 2011 ORGANIZATION
+# This file is distributed under the same license as the SciELOWeb project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: SciELOWeb 0.0\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2011-04-05 17:52-0300\n"
+"PO-Revision-Date: 2011-04-05 17:53-0300\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: pt <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 0.9.6\n"
+
+#: scieloweb/templates/home.pt:35
+msgid "help"
+msgstr ""
+
+#: scieloweb/templates/home.pt:30
+msgid "about this site"
+msgstr ""
+
+#: scieloweb/templates/home.pt:25
+msgid "SciELO"
+msgstr "SciELO Brasil"
+

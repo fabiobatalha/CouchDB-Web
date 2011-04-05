@@ -2,11 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
   xmlns:tal="http://xml.zope.org/namespaces/tal"
   xmlns:metal="http://xml.zope.org/namespaces/metal"
+  xmlns:i18n="http://xml.zope.org/namespaces/i18n"
   metal:define-macro="master">
     <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
       <title tal:content="settings.identity.title">SciELO Site</title>
       <link rel="stylesheet" href="/static/css/styles.css" type="text/css" media="screen"></link>
+      <script src="/static/js/language.js"></script>
     </head>
     <body>
       <div class="container">
@@ -14,7 +16,10 @@
             <div class="identity">
                 <div class="left"><img src="/static/images/logo.gif" /></div>
                 <div class="right">
-                    <a href="#?lang=pt">português</a> | <a href="#?lang=en">inglês</a> | <a href="#?lang=es">español</a>
+	          <form id="form_language" action="/setlang/" method="post">
+	            <input type="hidden" id="language" name="language"/>
+		    <a id="lang_pt" href="javascript: void(0);">português</a> | <a id="lang_en" href="javascript: void(0);">inglês</a> | <a id="lang_es" href="javascript: void(0);">español</a>		    
+	          </form>
                 </div>
             </div>
             <div class="spacer"></div>

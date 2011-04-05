@@ -2,6 +2,12 @@
 
   <!-- this must be included for the view declarations to work -->
   <include package="pyramid_zcml" />
+  
+  <route 
+      name="general.set_language" 
+      pattern="/setlang/" 
+      view=".views.set_language" 
+      />  
 
   <route
      name="home"

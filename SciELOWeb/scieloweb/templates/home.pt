@@ -1,8 +1,8 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<p metal:use-macro="main.macros['master']">
+<p metal:use-macro="main.macros['master']" i18n:domain="scieloweb">
     <div class="middle" metal:fill-slot="middle">
         <div class="search">
-            <h2 class="sectionHeading">Search</h2>
+            <h2 class="sectionHeading" i18n:translate="">Search</h2>
             <form name="searchForm" action="http://www.scielo.br/cgi-bin/wxis.exe/iah/" method="post">
                 <input value="iah/iah.xis" name="IsisScript" type="hidden" />
                 <input value="i" name="lang" type="hidden" />
@@ -10,31 +10,37 @@
                 <input value="extSearch" name="nextAction" type="hidden" />
                 <input id="textEntry1" name="exprSearch" class="expression midium defaultValue" value="Enter one or more words" onfocus="clearDefault('textEntry1', 'expression midium'); this.value= (this.value=='Enter one or more words')? '' : this.value" onblur="clearDefault('textEntry1', 'expression midium defaultValue'); this.value= (this.value=='')? 'Enter one or more words' : this.value" type="text" />
                 <select class="inputText mini" name="indexSearch">
-                    <option selected="selected" value="^nTo^pTodos os índices^eTodos los indices^iAll indexes^d*^xTO ^yFULINV">All indexes</option>
-                    <option value="^nTi^pPalavras do título^ePalabras del título^iTitle words^xTI ^yPREINV^uTI_^mTI_">Title</option>
-                    <option value="^nAu^pAutor^eAutor^iAuthor^xAU ^yPREINV^uAU_^mAU_">Author</option>
-                    <option value="^nKw^pAssunto^eMateria^iSubject^xKW ^yPREINV^uKW_^mKW_">Subject</option>
+                    <option selected="selected" value="^nTo^pTodos os índices^eTodos los indices^iAll indexes^d*^xTO ^yFULINV" i18n:translate="">All indexes</option>
+                    <option value="^nTi^pPalavras do título^ePalabras del título^iTitle words^xTI ^yPREINV^uTI_^mTI_" i18n:translate="">Title</option>
+                    <option value="^nAu^pAutor^eAutor^iAuthor^xAU ^yPREINV^uAU_^mAU_" i18n:translate="">Author</option>
+                    <option value="^nKw^pAssunto^eMateria^iSubject^xKW ^yPREINV^uKW_^mKW_" i18n:translate="">Subject</option>
                 </select>
                 <select class="inputText mini" name="limit">
-                    <option value="0001-3714">This Journal</option>
-                    <option value="">All Collection</option>
+                    <option value="0001-3714" i18n:translate="">This Journal</option>
+                    <option value="" i18n:translate="">All Collection</option>
                 </select>
                 <input value="Search" name="submit" class="submit" type="submit" />
             </form>
         </div>        
-        <h4>SciELO</h4>
-        <p>	The Scientific Electronic Library Online - SciELO is an electronic library covering a selected collection of Brazilian scientific journals.</p>
-        <p>The library is an integral part of a project being developed by FAPESP - Fundação de Amparo à Pesquisa do Estado de São Paulo, in partnership with BIREME - the Latin American and Caribbean Center on Health Sciences Information. Since 2002, the Project is also supported by CNPq - Conselho Nacional de Desenvolvimento Científico e Tecnológico.</p>
-        <p>The Project envisages the development of a common methodology for the preparation, storage, dissemination and evaluation of scientific literature in electronic format.</p>
-        <p>As the project develops, new journal titles are being added in the library collection.</p>
-        <h4>about this site</h4>
-        <p>This is the home page of SciELO Brasil Site.</p>
-        <p>The objective of the site is to implement an electronic virtual library, providing full access to a collection of serial titles, a collection of issues from individual serial titles, as well as to the full text of articles. The access to both serial titles and articles is available via indexes and search forms.</p>
-        <p>SciELO site is an integral part of the FAPESP/BIREME/CNPq Project and it is an application of the methodology being developed by the project, particularly the Internet Interface module.</p>
-        <p>The site will be constantly updated both in form and content, according to the project's advancements.</p>
-        <h4>help</h4>
-        <p>SciELO interface provides access to its serials collection via an alphabetic list of titles or a subject list or a search form by word of serial titles, publisher names, city of publication and subject.</p>
-        <p>The interface also provides access to the full text of articles via author index or subject index, or by a search form on article elements such as author names, words from title, subject, words from the full text and publication year.</p>
-        <p>Click an hypertext link at the top to call the corresponding access page.</p>
+        <h4 i18n:translate="">SciELO</h4>
+        <div i18n:translate="">
+            <p>The Scientific Electronic Library Online - SciELO is an electronic library covering a selected collection of Brazilian scientific journals.</p>
+            <p>The library is an integral part of a project being developed by FAPESP - Fundação de Amparo à Pesquisa do Estado de São Paulo, in partnership with BIREME - the Latin American and Caribbean Center on Health Sciences Information. Since 2002, the Project is also supported by CNPq - Conselho Nacional de Desenvolvimento Científico e Tecnológico.</p>
+            <p>The Project envisages the development of a common methodology for the preparation, storage, dissemination and evaluation of scientific literature in electronic format.</p>
+            <p>As the project develops, new journal titles are being added in the library collection.</p>
+        </div>
+        <h4 i18n:translate="">about this site</h4>
+        <div i18n:translate="">        
+            <p>This is the home page of SciELO Brasil Site.</p>
+            <p>The objective of the site is to implement an electronic virtual library, providing full access to a collection of serial titles, a collection of issues from individual serial titles, as well as to the full text of articles. The access to both serial titles and articles is available via indexes and search forms.</p>
+            <p>SciELO site is an integral part of the FAPESP/BIREME/CNPq Project and it is an application of the methodology being developed by the project, particularly the Internet Interface module.</p>
+            <p>The site will be constantly updated both in form and content, according to the project's advancements.</p>
+        </div>
+        <h4 i18n:translate="">help</h4>
+        <div i18n:translate="">        
+            <p>SciELO interface provides access to its serials collection via an alphabetic list of titles or a subject list or a search form by word of serial titles, publisher names, city of publication and subject.</p>
+            <p>The interface also provides access to the full text of articles via author index or subject index, or by a search form on article elements such as author names, words from title, subject, words from the full text and publication year.</p>
+            <p>Click an hypertext link at the top to call the corresponding access page.</p>
+        </div>
     </div>
 </p>
