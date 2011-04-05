@@ -56,22 +56,30 @@
         </div>
         <h2>Sumary</h2>
         <h3 tal:content="document.serial.title+' v.'+document.serial.vol+' n.'+document.serial.num+' '+document.serial.year"></h3>
-        <ul class="articles_list">
-            <li tal:repeat="article document.articles">
-                <a href="#" tal:attributes="href '/sci_arttext/'+article.pid" tal:content="article.title" />
-                <ul class="authors_list">
-                    <li tal:repeat="author article.authors">
-                        <span tal:replace="author.surname+', '+author.name+'; '" /> <br />
+        <ul class="sections_list">           
+            <li tal:repeat="section document.sections">
+                <span tal:replace="document.serial.sections[section]" tal:condition="python:document.serial.sections.has_key(section)" />
+                <ul class="articles_list">
+                    <span tal:repeat="article document.articles">
+                    <li tal:condition="article.section==section">
+                        <a href="#" tal:attributes="href '/sci_arttext/'+article.pid" tal:content="article.title" />
+                            <ul class="authors_list">
+                                <li tal:repeat="author article.authors">
+                                    <span tal:replace="author.surname+', '+author.name+'; '" /> <br />
+                                </li>
+                            </ul>
+                            <div class="spacer"></div>
+                            <ul class="options_list">
+                                <li><a href="#" tal:attributes="href '/sci_abstract/'+article.pid">abstract</a></li>
+                                <li><a href="#" tal:attributes="href '/sci_arttext/'+article.pid">full text</a></li>
+                                <li><a href="#" tal:attributes="href '/sci_pdf/'+article.pid">pdf</a></li>
+                            </ul>
+                        <div class="spacer"></div>
                     </li>
+                    </span>
                 </ul>
-                <div class="spacer"></div>
-                <ul class="options_list">
-                    <li><a href="#" tal:attributes="href '/sci_abstract/'+article.pid">abstract</a></li>
-                    <li><a href="#" tal:attributes="href '/sci_arttext/'+article.pid">full text</a></li>
-                    <li><a href="#" tal:attributes="href '/sci_pdf/'+article.pid">pdf</a></li>
-                </ul>
-                <div class="spacer"></div>
             </li>
         </ul>
+        <!--span tal:content="document.serial"></span-->
     </div>
 </p>

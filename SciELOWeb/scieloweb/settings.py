@@ -24,10 +24,10 @@ IDENTIFICATION = { "title": "SciELO - Scientific Electronic Library On-line",
 
 COUCHDB_VIEWS = { "sci_alphabetic": DB_SERVER+DB_NAME+"/_design/couchdb/_view/title?include_docs=true",
                   "sci_serial": DB_SERVER+DB_NAME+"/_design/couchdb/_view/title_id?include_docs=true&key=\"{pid}\"",
+                  "sci_issue": DB_SERVER+DB_NAME+"/_design/couchdb/_view/issue_id?include_docs=true&key=\"{pid}\"",
                   "sci_issues": DB_SERVER+DB_NAME+"/_design/couchdb/_view/issue_id?include_docs=true&startkey=\"{pid}\\u9999\"&endkey=\"{pid}\"&descending=true",
-                  "sci_issuetoc": DB_SERVER+DB_NAME+"/_design/couchdb/_view/article_id/?include_docs=true&startkey=\"S{pid}\\u9999\"&endkey=\"S{pid}\"&descending=true",
-                  "sci_abstract": DB_SERVER+DB_NAME+"/_design/couchdb/_view/article_id/{pid}?include_docs=true",
-                  "sci_arttext": DB_SERVER+DB_NAME+"/_design/couchdb/_view/article_id/{pid}?include_docs=true",
+                  "sci_issuetoc": DB_SERVER+DB_NAME+"/_design/couchdb/_view/article_id/?include_docs=true&startkey=\"S{pid}\"&endkey=\"S{pid}\\u9999\"",
+                  "sci_article": DB_SERVER+DB_NAME+"/_design/couchdb/_view/article_id/?include_docs=true&key=\"{pid}\"",
 }
 
 COUCHDB_QUERIES = { "journal_pressreleases": DB_SERVER+DB_NAME+"/_design/couchdb/_view/article_pr?descending=true&limit="+str(LIMIT)+"&lang=pt&startkey=[\"{pid}\",{brac}]&endkey=[\"{pid}\"]&descending=true",
@@ -38,4 +38,4 @@ COUCHDB_QUERIES = { "journal_pressreleases": DB_SERVER+DB_NAME+"/_design/couchdb
 
 # Website Configurations
 
-WS_CONFIG = { "identity" : {"title": "SciELO Brasil",}}
+WS_CONFIG = { "identity" : {"title": "SciELO Brasil","doi_prefix":"10.1590"}}

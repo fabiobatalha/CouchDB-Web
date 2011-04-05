@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<p metal:use-macro="main.macros['master']">
+    <div class="journaltools" metal:fill-slot="journaltools">
+        <div class="serial_logo">
+            <img tal:attributes="src '/static/images/revistas/'+document.serial.acron+'/glogo.gif'" width="200px" />
+        </div>
+        <div class="serial_header">
+            <span tal:replace="document.serial.issn_type" /> version: <span tal:replace="document.serial.issn" />
+        </div>
+        <div class="box">
+            <div class="title">Journal Tools</div>
+            <ul>
+                <li><a href="#" tal:attributes="href '/sci_serial/'+document.serial.issn">journal home</a></li>
+                <li><a href="#">about the journal</a></li>
+                <li><a href="#">editorial board</a></li>
+                <li><a href="#">instructions to authors</a></li>
+                <li><a href="#">subscription</a></li>
+                <li><a href="#">statistics</a></li>
+                <li><a href="#">submission on-line</a></li>
+            </ul>
+        </div>
+    </div>    
+    <div class="middle" metal:fill-slot="middle">
+        <div class="navegation">
+            <div class="title">issues list</div>
+            <div class="options">
+                <ul>
+                    <li><a href="#" tal:attributes="href '/sci_issues/'+document.serial.pid">all</a></li>
+                    <li><a href="#">previous</a></li>
+                    <li><a href="#">current</a></li>
+                    <li><a href="#">next</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="spacer"></div>
+        <div class="search">
+            <h2 class="sectionHeading">Search</h2>
+            <form name="searchForm" action="http://www.scielo.br/cgi-bin/wxis.exe/iah/" method="post">
+                <input value="iah/iah.xis" name="IsisScript" type="hidden" />
+                <input value="i" name="lang" type="hidden" />
+                <input value="article^dlibrary" name="base" type="hidden" />
+                <input value="extSearch" name="nextAction" type="hidden" />
+                <input id="textEntry1" name="exprSearch" class="expression midium defaultValue" value="Enter one or more words" onfocus="clearDefault('textEntry1', 'expression midium'); this.value= (this.value=='Enter one or more words')? '' : this.value" onblur="clearDefault('textEntry1', 'expression midium defaultValue'); this.value= (this.value=='')? 'Enter one or more words' : this.value" type="text" />
+                <select class="inputText mini" name="indexSearch">
+                    <option selected="selected" value="^nTo^pTodos os índices^eTodos los indices^iAll indexes^d*^xTO ^yFULINV">All indexes</option>
+                    <option value="^nTi^pPalavras do título^ePalabras del título^iTitle words^xTI ^yPREINV^uTI_^mTI_">Title</option>
+                    <option value="^nAu^pAutor^eAutor^iAuthor^xAU ^yPREINV^uAU_^mAU_">Author</option>
+                    <option value="^nKw^pAssunto^eMateria^iSubject^xKW ^yPREINV^uKW_^mKW_">Subject</option>
+                </select>
+                <select class="inputText mini" name="limit">
+                    <option value="0001-3714">This Journal</option>
+                    <option value="">All Collection</option>
+                </select>
+                <input value="Search" name="submit" class="submit" type="submit" />
+            </form>
+        </div>
+        <div class="article_content">
+            <div class="article">
+                <div class="title" tal:content="document.article.title" />
+                <ul class="authors" tal:repeat="author document.article.authors">
+                    <li tal:content="author.name+' '+author.surname+';&nbsp;'" />
+                </ul>
+                <div class="spacer"></div>
+                <div class="doi" tal:content="'doi: '+document.article.doi" />
+                <div class="spacer"></div>
+                <h2>Abstract</h2>
+                <span tal:content="document.article.abstract" />
+                <h2>Keywords</h2>
+                <ul tal:repeat="keyword document.article.keywords">
+                    <li tal:content="keyword"></li>
+                </ul>
+                <div class="spacer"></div>
+            </div>
+            <div class="servicebox">
+                <div class="title">Services on Demand</div>
+                <div class="group">
+                    <div class="title">Artigo</div>
+                    <ul>
+                        <li><a href="#"><img src="/static/images/toolbox/iconPDFDocument.gif" />Artigo em PDF</a></li>
+                        <li><a href="#"><img src="/static/images/toolbox/iconXMLDocument.gif" />Artigo em XML</a></li>
+                        <li><a href="#"><img src="/static/images/toolbox/iconReferences.gif" />Referencias do Artigo</a></li>
+                        <li><a href="#"><img src="/static/images/toolbox/fulltxt.gif" />Como Citar este Artigo</a></li>
+                        <li><a href="#"><img src="/static/images/toolbox/iconTranslation.gif" />Traduções Automáticas</a></li>
+                        <li><a href="#"><img src="/static/images/toolbox/btknewco.gif" />Mostar Destaques Semanticos</a></li>
+                        <li><a href="#"><img src="/static/images/toolbox/iconEmail.gif" />Enviar artigos por email</a></li>
+                    </ul>
+                </div>
+                <div class="group">
+                    <div class="title">Indicadores</div>
+                    <ul>
+                        <li><a href="#"><img src="/static/images/toolbox/iconCitedOn.gif" />Citados por SciELO</a></li>
+                        <li><a href="#"><img src="/static/images/toolbox/iconStatistics.gif" />Acessos</a></li>
+                    </ul>
+                </div>
+                <div class="group">
+                    <div class="title">Links Relacionados</div>
+                    <ul>
+                        <li><a href="#"><img src="/static/images/toolbox/iconRelatedOn.gif" />Similares em SciELO</a></li>
+                    </ul>
+                </div>
+                <div class="group">
+                    <div class="title">Bookmarks</div>
+                    <ul>
+                        <li>
+                            <!-- AddThis Button BEGIN -->
+                            <div class="addthis_toolbox addthis_default_style ">
+                            <a class="addthis_button_preferred_1"></a>
+                            <a class="addthis_button_preferred_2"></a>
+                            <a class="addthis_button_preferred_3"></a>
+                            <a class="addthis_button_preferred_4"></a>
+                            <span class="addthis_separator">|</span>
+                            <a href="http://www.addthis.com/bookmark.php?v=250&amp;pubid=xa-4d9a2eef58c57563" class="addthis_button_compact">Share</a>
+                            </div>
+                            <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4d9a2eef58c57563"></script>
+                            <!-- AddThis Button END -->
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="spacer"></div>
+        </div>
+    </div>
+</p>

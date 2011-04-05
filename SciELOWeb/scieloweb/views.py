@@ -203,11 +203,14 @@ def sci_issuetoc(request):
     num = ''
     year = ''
     month = ''
+    serial_sections = ''
     
     query1 = urllib2.urlopen(settings.COUCHDB_VIEWS["sci_serial"].format(pid=pidval[0:9]))
     query2 = urllib2.urlopen(settings.COUCHDB_VIEWS["sci_issuetoc"].format(pid=pidval))
+    query3 = urllib2.urlopen(settings.COUCHDB_VIEWS["sci_issue"].format(pid=pidval[0:18]))
     serialjson = json.loads(query1.read())
     articlejson = json.loads(query2.read())
+    issuejson =  json.loads(query3.read())
     
     # Creating serial dict just with relevant data
     if serialjson['rows'][0]['doc'].has_key('v400'):
@@ -215,6 +218,16 @@ def sci_issuetoc(request):
         
     if serialjson['rows'][0]['doc'].has_key('v710'):
         new_title = serialjson['rows'][0]['doc']['v710'][0]['_']
+        
+    if issuejson['rows'][0]['doc'].has_key('v49'):
+        issue_sections = issuejson['rows'][0]['doc']['v49']
+        
+        sections_dict = {}
+        for section in issue_sections:
+            if sections_dict.has_key(section['l']):
+                sections_dict[section['l']][section['c']] = section['t']
+            else:
+                sections_dict[section['l']] = {section['c']:section['t'] }
 
     if articlejson['rows'][0]['doc'].has_key('v31'):
         vol = articlejson['rows'][0]['doc']['v31'][0]['_']
@@ -245,15 +258,15 @@ def sci_issuetoc(request):
                 "vol": vol,
                 "num": num,
                 "year": year,
-                "month": month
+                "month": month,
+                "sections": sections_dict['en']
     }
     
     # Creating article dict just with relevant data for issue toc
-    articles_dict_arr = []
+    articles = {}
+    sections = {}
     for rows in articlejson['rows']:
-        article = {}
         authors_arr = []
-        
         # Getting Article Authors
         if rows['doc'].has_key('v10'):
             for authors in rows['doc']['v10']:
@@ -271,17 +284,40 @@ def sci_issuetoc(request):
                            "name": name
                     }
                 authors_arr.append(author)
-                
-        article = { "title": rows['doc']['v12'][0]['_'],
-                    "pid": rows['doc']['v880'][0]['_'],
-                    "authors": authors_arr
-                }
+
+        pid = rows['doc']['v880'][0]['_']
         
-        articles_dict_arr.append(article)
-        
+        section = ''
+        if rows['doc'].has_key('v49'):
+            section = rows['doc']['v49'][0]['_']
+            
+        if not articles.has_key(pid):
+            articles[pid] = {}
+            
+        articles[pid] = { "pid": pid,
+                   "title": rows['doc']['v12'][0]['_'],
+               "authors": authors_arr,
+               "section": section
+               }
+
+    articles_dict_arr = []
+    sorted_sections_dc = {}
+    sorted_sections_ls = []
+    for article in sorted(articles.iterkeys()):
+       articles_dict_arr.append(articles[article])
+       
+       ## Sorting Sections according to the article sort.
+       sectionkey = str(articles[article]['section'])
+       if not sorted_sections_dc.has_key(sectionkey):
+            sorted_sections_dc[articles[article]['section']] =''
+            sorted_sections_ls.append(articles[article]['section'])
+
+
+
     
     document = {"serial": serial,
-                "articles": articles_dict_arr
+                "articles": articles_dict_arr,
+                "sections": sorted_sections_ls
                 }
     
     main = get_renderer('scieloweb:templates/base.pt').implementation()
@@ -300,9 +336,12 @@ def sci_arttext(request):
     num = ''
     year = ''
     month = ''
+    abstract = ''
     
     query1 = urllib2.urlopen(settings.COUCHDB_VIEWS["sci_serial"].format(pid=pidval[1:10]))
+    query2 = urllib2.urlopen(settings.COUCHDB_VIEWS["sci_article"].format(pid=pidval[0:23]))
     serialjson = json.loads(query1.read())
+    articlejson = json.loads(query2.read())
     
     # Creating serial dict just with relevant data
     if serialjson['rows'][0]['doc'].has_key('v400'):
@@ -327,7 +366,68 @@ def sci_arttext(request):
                 "month": month
     }
     
-    document = {"serial": serial,
+    # Creating article dict just with the relevant data for abstract page
+    if articlejson['rows'][0]['doc'].has_key('v83'):  #Abstract
+        abstracts = articlejson['rows'][0]['doc']['v83']
+        
+        abstracts_dict = {}
+        for abstract in abstracts:
+            if abstracts_dict.has_key(abstract['l']):
+                abstracts_dict[abstract['l']] = abstract['a']
+            else:
+                abstracts_dict[abstract['l']] = ''
+                abstracts_dict[abstract['l']] = abstract['a']
+
+    if articlejson['rows'][0]['doc'].has_key('v85'):  #Keywords
+        keywords = articlejson['rows'][0]['doc']['v85']
+        
+        keywords_dict = {}
+        for keyword in keywords:
+            if keyword.has_key('l'):
+                if keywords_dict.has_key(keyword['l']):
+                    keywords_dict[keyword['l']].append(keyword['k'])
+                else:
+                    keywords_dict[keyword['l']] = []
+                    keywords_dict[keyword['l']].append(keyword['k'])        
+
+    if articlejson['rows'][0]['doc'].has_key('v10'): #Authors
+        authors = articlejson['rows'][0]['doc']['v10']
+        authors_dict = []
+        name = ''
+        surname = ''
+        
+        for author in authors:
+            if author.has_key('n'):
+                name = author['n']
+                
+            if author.has_key('s'):
+                surname = author['s']
+                
+            authors_dict.append({"surname": surname,"name": name })
+
+    if articlejson['rows'][0]['doc'].has_key('v12'):
+        titles = articlejson['rows'][0]['doc']['v12']
+        
+        titles_dict = {}
+        for title in titles:
+            if titles_dict.has_key(title['l']):
+                titles_dict[title['l']] = title['_']
+            else:
+                titles_dict[title['l']] = ''
+                titles_dict[title['l']] = title['_']
+
+    pid = articlejson['rows'][0]['doc']['v880'][0]['_']
+    
+    article = { "pid": pid,
+                "abstract": abstracts_dict['en'],
+                "keywords": keywords_dict['en'],
+                "authors": authors_dict,
+                "title": titles_dict['en'],
+                "doi": settings.WS_CONFIG['identity']['doi_prefix']+'/'+pid
+    }
+    
+    document = {    "serial": serial,
+                    "article": article 
                 }
     
     main = get_renderer('scieloweb:templates/base.pt').implementation()
@@ -346,9 +446,12 @@ def sci_abstract(request):
     num = ''
     year = ''
     month = ''
+    abstract = ''
     
     query1 = urllib2.urlopen(settings.COUCHDB_VIEWS["sci_serial"].format(pid=pidval[1:10]))
+    query2 = urllib2.urlopen(settings.COUCHDB_VIEWS["sci_article"].format(pid=pidval[0:23]))
     serialjson = json.loads(query1.read())
+    articlejson = json.loads(query2.read())
     
     # Creating serial dict just with relevant data
     if serialjson['rows'][0]['doc'].has_key('v400'):
@@ -373,7 +476,68 @@ def sci_abstract(request):
                 "month": month
     }
     
-    document = {"serial": serial,
+    # Creating article dict just with the relevant data for abstract page
+    if articlejson['rows'][0]['doc'].has_key('v83'):  #Abstract
+        abstracts = articlejson['rows'][0]['doc']['v83']
+        
+        abstracts_dict = {}
+        for abstract in abstracts:
+            if abstracts_dict.has_key(abstract['l']):
+                abstracts_dict[abstract['l']] = abstract['a']
+            else:
+                abstracts_dict[abstract['l']] = ''
+                abstracts_dict[abstract['l']] = abstract['a']
+
+    if articlejson['rows'][0]['doc'].has_key('v85'):  #Keywords
+        keywords = articlejson['rows'][0]['doc']['v85']
+        
+        keywords_dict = {}
+        for keyword in keywords:
+            if keyword.has_key('l'):
+                if keywords_dict.has_key(keyword['l']):
+                    keywords_dict[keyword['l']].append(keyword['k'])
+                else:
+                    keywords_dict[keyword['l']] = []
+                    keywords_dict[keyword['l']].append(keyword['k'])        
+
+    if articlejson['rows'][0]['doc'].has_key('v10'): #Authors
+        authors = articlejson['rows'][0]['doc']['v10']
+        authors_dict = []
+        name = ''
+        surname = ''
+        
+        for author in authors:
+            if author.has_key('n'):
+                name = author['n']
+                
+            if author.has_key('s'):
+                surname = author['s']
+                
+            authors_dict.append({"surname": surname,"name": name })
+
+    if articlejson['rows'][0]['doc'].has_key('v12'):
+        titles = articlejson['rows'][0]['doc']['v12']
+        
+        titles_dict = {}
+        for title in titles:
+            if titles_dict.has_key(title['l']):
+                titles_dict[title['l']] = title['_']
+            else:
+                titles_dict[title['l']] = ''
+                titles_dict[title['l']] = title['_']
+
+    pid = articlejson['rows'][0]['doc']['v880'][0]['_']
+    
+    article = { "pid": pid,
+                "abstract": abstracts_dict['en'],
+                "keywords": keywords_dict['en'],
+                "authors": authors_dict,
+                "title": titles_dict['en'],
+                "doi": settings.WS_CONFIG['identity']['doi_prefix']+'/'+pid
+    }
+    
+    document = {    "serial": serial,
+                    "article": article 
                 }
     
     main = get_renderer('scieloweb:templates/base.pt').implementation()
