@@ -32,7 +32,7 @@ def my_view(request):
 def sci_home(request):
     locale_name = negotiate_locale_name(request) 
     localizer = get_localizer(request)
-
+    
     main = get_renderer('scieloweb:templates/base.pt').implementation()
     
     return {'settings': settings.WS_CONFIG,

@@ -26,7 +26,7 @@ def custom_locale_negotiator(request):
     elif 'language' in request.cookies.keys():
         locale = request.cookies['language']
 
-    #if locale not in settings['available_languages'].split():
-    locale = settings['default_locale_name']
+    if locale not in settings['available_languages'].split():
+        locale = settings['default_locale_name']
 
     return locale
