@@ -39,27 +39,27 @@
             <div class="left">
             <div class="journaltools" metal:define-slot="journaltools"></div><!--/container -->
                 <div class="box">
-                    <div class="title">serial browsing</div>
+                    <div class="title" i18n:translate="">serial browsing</div>
                     <ul>
-                        <li><a href="/sci_alphabetic">alphabetic list</a></li>
-                        <li><a href="#">subject list</a></li>
-                        <li><a href="#">search form</a></li>
+                        <li><a href="/sci_alphabetic" i18n:translate="">alphabetic list</a></li>
+                        <li><a href="#" i18n:translate="">subject list</a></li>
+                        <li><a href="#" i18n:translate="">search form</a></li>
                     </ul>
                 </div>
                 <div class="box">
-                    <div class="title">article browsing</div>
+                    <div class="title" i18n:translate="">article browsing</div>
                     <ul>
-                        <li><a href="#">author index</a></li>
-                        <li><a href="#">subject index</a></li>
-                        <li><a href="#">search form</a></li>
+                        <li><a href="#" i18n:translate="">author index</a></li>
+                        <li><a href="#" i18n:translate="">subject index</a></li>
+                        <li><a href="#" i18n:translate="">search form</a></li>
                     </ul>
                 </div>
                 <div class="box">
-                    <div class="title">reports</div>
+                    <div class="title" i18n:translate="">reports</div>
                     <ul>
-                        <li><a href="#">site usage</a></li>
-                        <li><a href="#">journal citation</a></li>
-                        <li><a href="#">co-authors</a></li>
+                        <li><a href="#" i18n:translate="">site usage</a></li>
+                        <li><a href="#" i18n:translate="">journal citation</a></li>
+                        <li><a href="#" i18n:translate="">co-authors</a></li>
                     </ul>
                 </div>
             </div>

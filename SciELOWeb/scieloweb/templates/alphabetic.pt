@@ -10,23 +10,23 @@
                 <input value="extSearch" name="nextAction" type="hidden" />
                 <input id="textEntry1" name="exprSearch" class="expression midium defaultValue" value="Enter one or more words" onfocus="clearDefault('textEntry1', 'expression midium'); this.value= (this.value=='Enter one or more words')? '' : this.value" onblur="clearDefault('textEntry1', 'expression midium defaultValue'); this.value= (this.value=='')? 'Enter one or more words' : this.value" type="text" />
                 <select class="inputText mini" name="indexSearch">
-                    <option selected="selected" value="^nTo^pTodos os índices^eTodos los indices^iAll indexes^d*^xTO ^yFULINV">All indexes</option>
-                    <option value="^nTi^pPalavras do título^ePalabras del título^iTitle words^xTI ^yPREINV^uTI_^mTI_">Title</option>
-                    <option value="^nAu^pAutor^eAutor^iAuthor^xAU ^yPREINV^uAU_^mAU_">Author</option>
-                    <option value="^nKw^pAssunto^eMateria^iSubject^xKW ^yPREINV^uKW_^mKW_">Subject</option>
+                    <option selected="selected" value="^nTo^pTodos os índices^eTodos los indices^iAll indexes^d*^xTO ^yFULINV" i18n:translate="">All indexes</option>
+                    <option value="^nTi^pPalavras do título^ePalabras del título^iTitle words^xTI ^yPREINV^uTI_^mTI_" i18n:translate="">Title</option>
+                    <option value="^nAu^pAutor^eAutor^iAuthor^xAU ^yPREINV^uAU_^mAU_" i18n:translate="">Author</option>
+                    <option value="^nKw^pAssunto^eMateria^iSubject^xKW ^yPREINV^uKW_^mKW_" i18n:translate="">Subject</option>
                 </select>
                 <select class="inputText mini" name="limit">
-                    <option value="0001-3714">This Journal</option>
-                    <option value="">All Collection</option>
+                    <option value="0001-3714" i18n:translate="">This Journal</option>
+                    <option value="" i18n:translate="">All Collection</option>
                 </select>
                 <input value="Search" name="submit" class="submit" type="submit" />
             </form>
         </div>        
-        <h3>Current Titles - <span tal:replace="others.total_current"></span> serials</h3>
+        <h3 i18n:translate="">Current Titles - <span tal:replace="others.total_current"></span> serials</h3>
         <ul>
             <li tal:repeat="doc document.rows.current"> <a href="#" tal:attributes="href '/sci_serial/'+doc['issn']" tal:content="doc['title']" /> - <span tal:replace="doc['issues_total']"></span> issues</li> 
         </ul>
-        <h3>Non-Current Titles - <span tal:replace="others.total_noncurrent"></span> serials</h3>
+        <h3 i18n:translate="">Non-Current Titles - <span tal:replace="others.total_noncurrent"></span> serials</h3>
         <ul>
             <li tal:repeat="doc document.rows.noncurrent"> <a href="#" tal:attributes="href '/sci_serial/'+doc['issn']" tal:content="doc['title']" /> - <span tal:replace="doc['issues_total']"></span> issues</li> 
         </ul>

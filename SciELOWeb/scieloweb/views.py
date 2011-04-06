@@ -31,9 +31,7 @@ def my_view(request):
     
 def sci_home(request):
     settings = request.registry.settings
-    locale_name = negotiate_locale_name(request) 
-    localizer = get_localizer(request)
-    
+
     main = get_renderer('scieloweb:templates/base.pt').implementation()
     
     return {'settings': settings_app.WS_CONFIG,
@@ -113,12 +111,12 @@ def sci_serial(request):
     if serialjson['rows'][0]['doc'].has_key('v710'):
         new_title = serialjson['rows'][0]['doc']['v710'][0]['_']
 
-    serial = {  "pid": serialjson['rows'][0]['doc']['v935'][0]['_'],
+    serial = {  "pid": serialjson['rows'][0]['doc']['v400'][0]['_'],
                 "title": serialjson['rows'][0]['doc']['v150'][0]['_'],
                 "acron": serialjson['rows'][0]['doc']['v68'][0]['_'],
                 "publisher": serialjson['rows'][0]['doc']['v480'][0]['_'],
                 "issn_type": serialjson['rows'][0]['doc']['v35'][0]['_'],
-                "issn": serialjson['rows'][0]['doc']['v935'][0]['_'],
+                "issn": serialjson['rows'][0]['doc']['v400'][0]['_'],
                 "mission": serialjson['rows'][0]['doc']['v901'][0]['_'],
                 "address": serialjson['rows'][0]['doc']['v63'],
                 "issn_newtitle": issn_newtitle,
@@ -156,12 +154,12 @@ def sci_issues(request):
     if serialjson['rows'][0]['doc'].has_key('v710'):
         new_title = serialjson['rows'][0]['doc']['v710'][0]['_']
 
-    serial = {  "pid": serialjson['rows'][0]['doc']['v935'][0]['_'],
+    serial = {  "pid": serialjson['rows'][0]['doc']['v400'][0]['_'],
                 "title": serialjson['rows'][0]['doc']['v150'][0]['_'],
                 "acron": serialjson['rows'][0]['doc']['v68'][0]['_'],
                 "publisher": serialjson['rows'][0]['doc']['v480'][0]['_'],
                 "issn_type": serialjson['rows'][0]['doc']['v35'][0]['_'],
-                "issn": serialjson['rows'][0]['doc']['v935'][0]['_'],
+                "issn": serialjson['rows'][0]['doc']['v400'][0]['_'],
                 "mission": serialjson['rows'][0]['doc']['v901'][0]['_'],
                 "address": serialjson['rows'][0]['doc']['v63'],
                 "issn_newtitle": issn_newtitle,
@@ -280,12 +278,12 @@ def sci_issuetoc(request):
         year = articlejson['rows'][0]['doc']['v65'][0]['_'][0:4]
         month = articlejson['rows'][0]['doc']['v65'][0]['_'][5:]
 
-    serial = {  "pid": serialjson['rows'][0]['doc']['v935'][0]['_'],
+    serial = {  "pid": serialjson['rows'][0]['doc']['v400'][0]['_'],
                 "title": serialjson['rows'][0]['doc']['v150'][0]['_'],
                 "acron": serialjson['rows'][0]['doc']['v68'][0]['_'],
                 "publisher": serialjson['rows'][0]['doc']['v480'][0]['_'],
                 "issn_type": serialjson['rows'][0]['doc']['v35'][0]['_'],
-                "issn": serialjson['rows'][0]['doc']['v935'][0]['_'],
+                "issn": serialjson['rows'][0]['doc']['v400'][0]['_'],
                 "mission": serialjson['rows'][0]['doc']['v901'][0]['_'],
                 "address": serialjson['rows'][0]['doc']['v63'],
                 "issn_newtitle": issn_newtitle,
@@ -301,6 +299,7 @@ def sci_issuetoc(request):
     articles = {}
     sections = {}
     for rows in articlejson['rows']:
+        has_abstract = False
         authors_arr = []
         # Getting Article Authors
         if rows['doc'].has_key('v10'):
@@ -322,6 +321,12 @@ def sci_issuetoc(request):
 
         pid = rows['doc']['v880'][0]['_']
         
+        if rows['doc'].has_key('v40'):  #Article Default language
+            article_default_language = rows['doc']['v40'][0]['_']
+
+        if rows['doc'].has_key('v83'):  #Abstract
+            has_abstract = True
+
         if rows['doc'].has_key('v12'):
             titles = rows['doc']['v12']
             
@@ -339,7 +344,7 @@ def sci_issuetoc(request):
             elif titles_dict.has_key(settings.default_locale_name):
                 title_translated = titles_dict[settings.default_locale_name]
             else:
-                title_translated = article_default_language        
+                title_translated = titles_dict[article_default_language]
         
         section = ''
         if rows['doc'].has_key('v49'):
@@ -351,7 +356,8 @@ def sci_issuetoc(request):
         articles[pid] = { "pid": pid,
                    "title": title_translated,
                "authors": authors_arr,
-               "section": section
+               "section": section,
+               "has_abstract": has_abstract
                }
 
     articles_dict_arr = []
@@ -365,10 +371,7 @@ def sci_issuetoc(request):
        if not sorted_sections_dc.has_key(sectionkey):
             sorted_sections_dc[articles[article]['section']] =''
             sorted_sections_ls.append(articles[article]['section'])
-
-
-
-    
+   
     document = {"serial": serial,
                 "articles": articles_dict_arr,
                 "sections": sorted_sections_ls
@@ -411,12 +414,12 @@ def sci_arttext(request):
     if serialjson['rows'][0]['doc'].has_key('v710'):
         new_title = serialjson['rows'][0]['doc']['v710'][0]['_']
 
-    serial = {  "pid": serialjson['rows'][0]['doc']['v935'][0]['_'],
+    serial = {  "pid": serialjson['rows'][0]['doc']['v400'][0]['_'],
                 "title": serialjson['rows'][0]['doc']['v150'][0]['_'],
                 "acron": serialjson['rows'][0]['doc']['v68'][0]['_'],
                 "publisher": serialjson['rows'][0]['doc']['v480'][0]['_'],
                 "issn_type": serialjson['rows'][0]['doc']['v35'][0]['_'],
-                "issn": serialjson['rows'][0]['doc']['v935'][0]['_'],
+                "issn": serialjson['rows'][0]['doc']['v400'][0]['_'],
                 "mission": serialjson['rows'][0]['doc']['v901'][0]['_'],
                 "address": serialjson['rows'][0]['doc']['v63'],
                 "issn_newtitle": issn_newtitle,
@@ -431,7 +434,7 @@ def sci_arttext(request):
     pid = articlejson['rows'][0]['doc']['v880'][0]['_']
         
     if articlejson['rows'][0]['doc'].has_key('v40'):  #Article Default language
-        article_default_language = articlejson['rows'][0]['doc']['v40']
+        article_default_language = articlejson['rows'][0]['doc']['v40'][0]['_']
     
     if articlejson['rows'][0]['doc'].has_key('v83'):  #Abstract
         abstracts = articlejson['rows'][0]['doc']['v83']
@@ -450,8 +453,8 @@ def sci_arttext(request):
         elif abstracts_dict.has_key(settings.default_locale_name):
             abstract_translated = abstracts_dict[settings.default_locale_name]
         else:
-            abstract_translated = article_default_language
-            
+            abstract_translated = abstracts_dict[article_default_language]
+
     if articlejson['rows'][0]['doc'].has_key('v85'):  #Keywords
         keywords = articlejson['rows'][0]['doc']['v85']
         
@@ -470,7 +473,7 @@ def sci_arttext(request):
         elif keywords_dict.has_key(settings.default_locale_name):
             keyword_translated = keywords_dict[settings.default_locale_name]
         else:
-            keyword_translated = article_default_language
+            keyword_translated = keywords_dict[article_default_language]
 
     if articlejson['rows'][0]['doc'].has_key('v10'): #Authors
         authors = articlejson['rows'][0]['doc']['v10']
@@ -504,7 +507,7 @@ def sci_arttext(request):
         elif titles_dict.has_key(settings.default_locale_name):
             title_translated = titles_dict[settings.default_locale_name]
         else:
-            title_translated = article_default_language
+            title_translated = titles_dict[article_default_language]
             
 
     
@@ -557,12 +560,12 @@ def sci_abstract(request):
     if serialjson['rows'][0]['doc'].has_key('v710'):
         new_title = serialjson['rows'][0]['doc']['v710'][0]['_']
 
-    serial = {  "pid": serialjson['rows'][0]['doc']['v935'][0]['_'],
+    serial = {  "pid": serialjson['rows'][0]['doc']['v400'][0]['_'],
                 "title": serialjson['rows'][0]['doc']['v150'][0]['_'],
                 "acron": serialjson['rows'][0]['doc']['v68'][0]['_'],
                 "publisher": serialjson['rows'][0]['doc']['v480'][0]['_'],
                 "issn_type": serialjson['rows'][0]['doc']['v35'][0]['_'],
-                "issn": serialjson['rows'][0]['doc']['v935'][0]['_'],
+                "issn": serialjson['rows'][0]['doc']['v400'][0]['_'],
                 "mission": serialjson['rows'][0]['doc']['v901'][0]['_'],
                 "address": serialjson['rows'][0]['doc']['v63'],
                 "issn_newtitle": issn_newtitle,
@@ -577,7 +580,7 @@ def sci_abstract(request):
     pid = articlejson['rows'][0]['doc']['v880'][0]['_']
         
     if articlejson['rows'][0]['doc'].has_key('v40'):  #Article Default language
-        article_default_language = articlejson['rows'][0]['doc']['v40']
+        article_default_language = articlejson['rows'][0]['doc']['v40'][0]['_']
     
     if articlejson['rows'][0]['doc'].has_key('v83'):  #Abstract
         abstracts = articlejson['rows'][0]['doc']['v83']
@@ -596,7 +599,7 @@ def sci_abstract(request):
         elif abstracts_dict.has_key(settings.default_locale_name):
             abstract_translated = abstracts_dict[settings.default_locale_name]
         else:
-            abstract_translated = article_default_language
+            abstract_translated = abstracts_dict[article_default_language]
             
     if articlejson['rows'][0]['doc'].has_key('v85'):  #Keywords
         keywords = articlejson['rows'][0]['doc']['v85']
@@ -613,10 +616,10 @@ def sci_abstract(request):
         # getting keywords according to language
         if keywords_dict.has_key(locale_name):
             keyword_translated = keywords_dict[locale_name]
-        elif abstracts_dict.has_key(settings.default_locale_name):
+        elif keywords_dict.has_key(settings.default_locale_name):
             keyword_translated = keywords_dict[settings.default_locale_name]
         else:
-            keyword_translated = article_default_language
+            keyword_translated = keywords_dict[article_default_language]
 
     if articlejson['rows'][0]['doc'].has_key('v10'): #Authors
         authors = articlejson['rows'][0]['doc']['v10']
@@ -647,10 +650,10 @@ def sci_abstract(request):
         # getting title according to language
         if titles_dict.has_key(locale_name):
             title_translated = titles_dict[locale_name]
-        elif abstracts_dict.has_key(settings.default_locale_name):
+        elif titles_dict.has_key(settings.default_locale_name):
             title_translated = titles_dict[settings.default_locale_name]
         else:
-            title_translated = article_default_language
+            title_translated = titles_dict[article_default_language]
             
 
     

@@ -77,34 +77,34 @@
                 <div class="spacer"></div>
             </div>
             <div class="servicebox">
-                <div class="title">Services on Demand</div>
+                <div class="title" i18n:translate="">Services on Demand</div>
                 <div class="group">
-                    <div class="title">Artigo</div>
+                    <div class="title" i18n:translate="">Artigo</div>
                     <ul>
-                        <li><a href="#"><img src="/static/images/toolbox/iconPDFDocument.gif" />Artigo em PDF</a></li>
-                        <li><a href="#"><img src="/static/images/toolbox/iconXMLDocument.gif" />Artigo em XML</a></li>
-                        <li><a href="#"><img src="/static/images/toolbox/iconReferences.gif" />Referencias do Artigo</a></li>
-                        <li><a href="#"><img src="/static/images/toolbox/fulltxt.gif" />Como Citar este Artigo</a></li>
-                        <li><a href="#"><img src="/static/images/toolbox/iconTranslation.gif" />Traduções Automáticas</a></li>
-                        <li><a href="#"><img src="/static/images/toolbox/btknewco.gif" />Mostar Destaques Semanticos</a></li>
-                        <li><a href="#"><img src="/static/images/toolbox/iconEmail.gif" />Enviar artigos por email</a></li>
+                        <li><a href="#" i18n:translate=""><img src="/static/images/toolbox/iconPDFDocument.gif"/>Artigo em PDF</a></li>
+                        <li><a href="#" i18n:translate=""><img src="/static/images/toolbox/iconXMLDocument.gif"/>Artigo em XML</a></li>
+                        <li><a href="#" i18n:translate=""><img src="/static/images/toolbox/iconReferences.gif"/>Referencias do Artigo</a></li>
+                        <li><a href="#" i18n:translate=""><img src="/static/images/toolbox/fulltxt.gif"/>Como Citar este Artigo</a></li>
+                        <li><a href="#" i18n:translate=""><img src="/static/images/toolbox/iconTranslation.gif"/>Traduções Automáticas</a></li>
+                        <li><a href="#" i18n:translate=""><img src="/static/images/toolbox/btknewco.gif"/>Mostar Destaques Semanticos</a></li>
+                        <li><a href="#" i18n:translate=""><img src="/static/images/toolbox/iconEmail.gif"/>Enviar artigos por email</a></li>
                     </ul>
                 </div>
                 <div class="group">
-                    <div class="title">Indicadores</div>
+                    <div class="title" i18n:translate="">Indicadores</div>
                     <ul>
-                        <li><a href="#"><img src="/static/images/toolbox/iconCitedOn.gif" />Citados por SciELO</a></li>
-                        <li><a href="#"><img src="/static/images/toolbox/iconStatistics.gif" />Acessos</a></li>
+                        <li><a href="#" i18n:translate=""><img src="/static/images/toolbox/iconCitedOn.gif"/>Citados por SciELO</a></li>
+                        <li><a href="#" i18n:translate=""><img src="/static/images/toolbox/iconStatistics.gif"/>Acessos</a></li>
                     </ul>
                 </div>
                 <div class="group">
-                    <div class="title">Links Relacionados</div>
+                    <div class="title" i18n:translate="">Links Relacionados</div>
                     <ul>
-                        <li><a href="#"><img src="/static/images/toolbox/iconRelatedOn.gif" />Similares em SciELO</a></li>
+                        <li><a href="#" i18n:translate=""><img src="/static/images/toolbox/iconRelatedOn.gif"/>Similares em SciELO</a></li>
                     </ul>
                 </div>
                 <div class="group">
-                    <div class="title">Bookmarks</div>
+                    <div class="title" i18n:translate="">Bookmarks</div>
                     <ul>
                         <li>
                             <!-- AddThis Button BEGIN -->

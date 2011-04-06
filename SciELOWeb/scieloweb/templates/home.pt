@@ -22,7 +22,7 @@
                 <input value="Search" name="submit" class="submit" type="submit" />
             </form>
         </div>        
-        <h4 tal:content="_(msgid='SciELO')" i18n:translate="">SciELO</h4>
+        <h4 i18n:translate="">SciELO</h4>
         <div i18n:translate="">
             <p>The Scientific Electronic Library Online - SciELO is an electronic library covering a selected collection of Brazilian scientific journals.</p>
             <p>The library is an integral part of a project being developed by FAPESP - Fundação de Amparo à Pesquisa do Estado de São Paulo, in partnership with BIREME - the Latin American and Caribbean Center on Health Sciences Information. Since 2002, the Project is also supported by CNPq - Conselho Nacional de Desenvolvimento Científico e Tecnológico.</p>

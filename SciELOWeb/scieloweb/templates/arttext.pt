@@ -5,30 +5,30 @@
             <img tal:attributes="src '/static/images/revistas/'+document.serial.acron+'/glogo.gif'" width="200px" />
         </div>
         <div class="serial_header">
-            <span tal:replace="document.serial.issn_type" /> version: <span tal:replace="document.serial.issn" />
+            <span tal:replace="document.serial.issn_type" i18n:translate="" /> version: <span tal:replace="document.serial.issn" />
         </div>
         <div class="box">
-            <div class="title">Journal Tools</div>
+            <div class="title" i18n:translate="">Journal Tools</div>
             <ul>
-                <li><a href="#" tal:attributes="href '/sci_serial/'+document.serial.issn">journal home</a></li>
-                <li><a href="#">about the journal</a></li>
-                <li><a href="#">editorial board</a></li>
-                <li><a href="#">instructions to authors</a></li>
-                <li><a href="#">subscription</a></li>
-                <li><a href="#">statistics</a></li>
-                <li><a href="#">submission on-line</a></li>
+                <li><a href="#" tal:attributes="href '/sci_serial/'+document.serial.issn" i18n:translate="">journal home</a></li>
+                <li><a href="#" i18n:translate="">about the journal</a></li>
+                <li><a href="#" i18n:translate="">editorial board</a></li>
+                <li><a href="#" i18n:translate="">instructions to authors</a></li>
+                <li><a href="#" i18n:translate="">subscription</a></li>
+                <li><a href="#" i18n:translate="">statistics</a></li>
+                <li><a href="#" i18n:translate="">submission on-line</a></li>
             </ul>
         </div>
     </div>    
     <div class="middle" metal:fill-slot="middle">
         <div class="navegation">
-            <div class="title">issues list</div>
+            <div class="title" i18n:translate="">issues list</div>
             <div class="options">
                 <ul>
-                    <li><a href="#" tal:attributes="href '/sci_issues/'+document.serial.pid">all</a></li>
-                    <li><a href="#">previous</a></li>
-                    <li><a href="#">current</a></li>
-                    <li><a href="#">next</a></li>
+                    <li><a href="#" tal:attributes="href '/sci_issues/'+document.serial.pid" i18n:translate="">all</a></li>
+                    <li><a href="#" i18n:translate="">previous</a></li>
+                    <li><a href="#" i18n:translate="">current</a></li>
+                    <li><a href="#" i18n:translate="">next</a></li>
                 </ul>
             </div>
         </div>
@@ -63,43 +63,43 @@
                 <div class="spacer"></div>
                 <div class="doi" tal:content="'doi: '+document.article.doi" />
                 <div class="spacer"></div>
-                <h2>Abstract</h2>
+                <h2 i18n:translate="">Abstract</h2>
                 <span tal:content="document.article.abstract" />
-                <h2>Keywords</h2>
+                <h2 i18n:translate="">Keywords</h2>
                 <ul tal:repeat="keyword document.article.keywords">
                     <li tal:content="keyword"></li>
                 </ul>
                 <div class="spacer"></div>
             </div>
             <div class="servicebox">
-                <div class="title">Services on Demand</div>
+                <div class="title" i18n:translate="">Services on Demand</div>
                 <div class="group">
-                    <div class="title">Artigo</div>
+                    <div class="title" i18n:translate="">Artigo</div>
                     <ul>
-                        <li><a href="#"><img src="/static/images/toolbox/iconPDFDocument.gif" />Artigo em PDF</a></li>
-                        <li><a href="#"><img src="/static/images/toolbox/iconXMLDocument.gif" />Artigo em XML</a></li>
-                        <li><a href="#"><img src="/static/images/toolbox/iconReferences.gif" />Referencias do Artigo</a></li>
-                        <li><a href="#"><img src="/static/images/toolbox/fulltxt.gif" />Como Citar este Artigo</a></li>
-                        <li><a href="#"><img src="/static/images/toolbox/iconTranslation.gif" />Traduções Automáticas</a></li>
-                        <li><a href="#"><img src="/static/images/toolbox/btknewco.gif" />Mostar Destaques Semanticos</a></li>
-                        <li><a href="#"><img src="/static/images/toolbox/iconEmail.gif" />Enviar artigos por email</a></li>
+                        <li><a href="#" i18n:translate=""><img src="/static/images/toolbox/iconPDFDocument.gif"/>Artigo em PDF</a></li>
+                        <li><a href="#" i18n:translate=""><img src="/static/images/toolbox/iconXMLDocument.gif"/>Artigo em XML</a></li>
+                        <li><a href="#" i18n:translate=""><img src="/static/images/toolbox/iconReferences.gif"/>Referencias do Artigo</a></li>
+                        <li><a href="#" i18n:translate=""><img src="/static/images/toolbox/fulltxt.gif"/>Como Citar este Artigo</a></li>
+                        <li><a href="#" i18n:translate=""><img src="/static/images/toolbox/iconTranslation.gif"/>Traduções Automáticas</a></li>
+                        <li><a href="#" i18n:translate=""><img src="/static/images/toolbox/btknewco.gif"/>Mostar Destaques Semanticos</a></li>
+                        <li><a href="#" i18n:translate=""><img src="/static/images/toolbox/iconEmail.gif"/>Enviar artigos por email</a></li>
                     </ul>
                 </div>
                 <div class="group">
-                    <div class="title">Indicadores</div>
+                    <div class="title" i18n:translate="">Indicadores</div>
                     <ul>
-                        <li><a href="#"><img src="/static/images/toolbox/iconCitedOn.gif" />Citados por SciELO</a></li>
-                        <li><a href="#"><img src="/static/images/toolbox/iconStatistics.gif" />Acessos</a></li>
+                        <li><a href="#" i18n:translate=""><img src="/static/images/toolbox/iconCitedOn.gif"/>Citados por SciELO</a></li>
+                        <li><a href="#" i18n:translate=""><img src="/static/images/toolbox/iconStatistics.gif"/>Acessos</a></li>
                     </ul>
                 </div>
                 <div class="group">
-                    <div class="title">Links Relacionados</div>
+                    <div class="title" i18n:translate="">Links Relacionados</div>
                     <ul>
-                        <li><a href="#"><img src="/static/images/toolbox/iconRelatedOn.gif" />Similares em SciELO</a></li>
+                        <li><a href="#" i18n:translate=""><img src="/static/images/toolbox/iconRelatedOn.gif"/>Similares em SciELO</a></li>
                     </ul>
                 </div>
                 <div class="group">
-                    <div class="title">Bookmarks</div>
+                    <div class="title" i18n:translate="">Bookmarks</div>
                     <ul>
                         <li>
                             <!-- AddThis Button BEGIN -->

@@ -8,15 +8,15 @@
             <span tal:replace="document.serial.issn_type" /> version: <span tal:replace="document.serial.issn" />
         </div>
         <div class="box">
-            <div class="title">Journal Tools</div>
+            <div class="title" i18n:translate="">Journal Tools</div>
             <ul>
-                <li><a href="#" tal:attributes="href '/sci_serial/'+document.serial.issn">journal home</a></li>
-                <li><a href="#">about the journal</a></li>
-                <li><a href="#">editorial board</a></li>
-                <li><a href="#">instructions to authors</a></li>
-                <li><a href="#">subscription</a></li>
-                <li><a href="#">statistics</a></li>
-                <li><a href="#">submission on-line</a></li>
+                <li><a href="#" tal:attributes="href '/sci_serial/'+document.serial.issn" i18n:translate="">journal home</a></li>
+                <li><a href="#" i18n:translate="">about the journal</a></li>
+                <li><a href="#" i18n:translate="">editorial board</a></li>
+                <li><a href="#" i18n:translate="">instructions to authors</a></li>
+                <li><a href="#" i18n:translate="">subscription</a></li>
+                <li><a href="#" i18n:translate="">statistics</a></li>
+                <li><a href="#" i18n:translate="">submission on-line</a></li>
             </ul>
         </div>
     </div>    
@@ -70,7 +70,7 @@
                             </ul>
                             <div class="spacer"></div>
                             <ul class="options_list">
-                                <li><a href="#" tal:attributes="href '/sci_abstract/'+article.pid">abstract</a></li>
+                                <li tal:condition="article.has_abstract"><a href="#" tal:attributes="href '/sci_abstract/'+article.pid">abstract</a></li>
                                 <li><a href="#" tal:attributes="href '/sci_arttext/'+article.pid">full text</a></li>
                                 <li><a href="#" tal:attributes="href '/sci_pdf/'+article.pid">pdf</a></li>
                             </ul>
