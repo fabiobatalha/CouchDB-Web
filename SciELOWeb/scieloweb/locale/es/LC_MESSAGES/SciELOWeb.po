@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SciELOWeb 0.0\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2011-04-05 17:52-0300\n"
+"POT-Creation-Date: 2011-04-05 21:42-0300\n"
 "PO-Revision-Date: 2011-04-05 17:53-0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: es <LL@li.org>\n"
@@ -17,15 +17,67 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 0.9.6\n"
 
-#: scieloweb/templates/home.pt:35
+#: scieloweb/templates/base.pt:32
+msgid "team"
+msgstr ""
+
+#: scieloweb/templates/base.pt:31
+msgid "about"
+msgstr ""
+
+#: scieloweb/templates/base.pt:30 scieloweb/templates/home.pt:39
 msgid "help"
 msgstr ""
 
-#: scieloweb/templates/home.pt:30
+#: scieloweb/templates/base.pt:29
+msgid "journals evaluation"
+msgstr "evaluaci—n de peri—dicos"
+
+#: scieloweb/templates/base.pt:28
+msgid "home"
+msgstr ""
+
+#: scieloweb/templates/home.pt:40 scieloweb/templates/home.pt:33
+#: scieloweb/templates/home.pt:26
+msgid " "
+msgstr ""
+
+#: scieloweb/templates/home.pt:32
 msgid "about this site"
 msgstr ""
 
 #: scieloweb/templates/home.pt:25
 msgid "SciELO"
 msgstr "SciELO Brasil"
+
+#: scieloweb/templates/home.pt:20
+msgid "All Collection"
+msgstr ""
+
+#: scieloweb/templates/home.pt:19
+msgid "This Journal"
+msgstr ""
+
+#: scieloweb/templates/home.pt:16
+msgid "Subject"
+msgstr ""
+
+#: scieloweb/templates/home.pt:15
+msgid "Author"
+msgstr ""
+
+#: scieloweb/templates/home.pt:14
+msgid "Title"
+msgstr ""
+
+#: scieloweb/templates/home.pt:13
+msgid "All indexes"
+msgstr ""
+
+#: scieloweb/templates/home.pt:5
+msgid "Search"
+msgstr ""
+
+#~ msgid "jounals evaluation"
+#~ msgstr ""
 

@@ -25,11 +25,11 @@
             <div class="spacer"></div>
             <div class="menubar">
                 <ul>
-                    <li><a href="/">home</a></li>
-                    <li><a href="#">jounals evaluation</a></li>
-                    <li><a href="#">help</a></li>
-                    <li><a href="#">about</a></li>
-                    <li><a href="#">team</a></li>
+                    <li><a href="/" i18n:translate="">home</a></li>
+                    <li><a href="#" i18n:translate="">journals evaluation</a></li>
+                    <li><a href="#" i18n:translate="">help</a></li>
+                    <li><a href="#" i18n:translate="">about</a></li>
+                    <li><a href="#" i18n:translate="">team</a></li>
                 </ul>
             </div>
             <div class="spacer"></div>
