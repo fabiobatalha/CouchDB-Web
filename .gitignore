@@ -1,5 +1,6 @@
 env
 app
 *.pyc
+*.mo
 scielo3-env/
 *~

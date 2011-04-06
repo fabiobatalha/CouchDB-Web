@@ -31,7 +31,7 @@ msgstr ""
 
 #: scieloweb/templates/base.pt:29
 msgid "journals evaluation"
-msgstr "Avaliação de Periódicos"
+msgstr "Avalia√ß√£o de Peri√≥dicos"
 
 #: scieloweb/templates/base.pt:28
 msgid "home"

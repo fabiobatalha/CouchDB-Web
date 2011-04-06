@@ -7,7 +7,7 @@ from pyramid.renderers import get_renderer
 from pyramid.i18n import TranslationStringFactory, negotiate_locale_name, get_localizer
 
 
-_ = TranslationStringFactory('scieloweb')
+_ = TranslationStringFactory('SciELOWeb')
 
 import urllib2
 import pdb
