@@ -3,7 +3,8 @@
   xmlns:tal="http://xml.zope.org/namespaces/tal"
   xmlns:metal="http://xml.zope.org/namespaces/metal"
   xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-  metal:define-macro="master">
+  metal:define-macro="master"
+  i18n:domain="SciELOWeb">
     <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
       <title tal:content="settings.identity.title">SciELO Site</title>
@@ -18,7 +19,7 @@
                 <div class="right">
 	          <form id="form_language" action="/setlang/" method="post">
 	            <input type="hidden" id="language" name="language"/>
-		    <a id="lang_pt" href="javascript: void(0);">português</a> | <a id="lang_en" href="javascript: void(0);">inglês</a> | <a id="lang_es" href="javascript: void(0);">español</a>		    
+		    <a id="lang_pt" href="javascript: void(0);">português</a> | <a id="lang_en" href="javascript: void(0);">english</a> | <a id="lang_es" href="javascript: void(0);">español</a>		    
 	          </form>
                 </div>
             </div>
