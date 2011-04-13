@@ -30,8 +30,8 @@ COUCHDB_VIEWS = { "sci_alphabetic": DB_SERVER+DB_NAME+"/_design/couchdb/_view/ti
                   "sci_article": DB_SERVER+DB_NAME+"/_design/couchdb/_view/article_id/?include_docs=true&key=\"{pid}\"",
 }
 
-COUCHDB_QUERIES = { "journal_pressreleases": DB_SERVER+DB_NAME+"/_design/couchdb/_view/article_pr?descending=true&limit="+str(LIMIT)+"&lang=pt&startkey=[\"{pid}\",{brac}]&endkey=[\"{pid}\"]&descending=true",
-                    "journal_lastarticles": DB_SERVER+DB_NAME+"/_design/couchdb/_view/article?descending=true&limit="+str(LIMIT)+"&lang=pt&startkey=[\"{pid}\",{brac}]&endkey=[\"{pid}\"]&descending=true",
+COUCHDB_QUERIES = { "journal_pressreleases": DB_SERVER+DB_NAME+"/_design/couchdb/_view/article_pr?include_docs=true&limit="+str(LIMIT)+"&startkey=[\"{pid}\",{brac}]&endkey=[\"{pid}\"]&descending=true",
+                    "journal_lastarticles": DB_SERVER+DB_NAME+"/_design/couchdb/_view/article?include_docs=true&limit="+str(LIMIT)+"&startkey=[\"{pid}\",{brac}]&endkey=[\"{pid}\"]&descending=true",
                     "issues_count_pid":     DB_SERVER+DB_NAME+"/_design/couchdb/_view/issue_count?key=[\"{pid}\"]&group=true",
                     "issues_count_all":     DB_SERVER+DB_NAME+"/_design/couchdb/_view/issue_count?group=true",
 }

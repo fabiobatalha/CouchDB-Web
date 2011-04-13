@@ -1,11 +1,11 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<p metal:use-macro="main.macros['master']">
+<p metal:use-macro="main.macros['master']" i18n:domain="SciELOWeb">
     <div class="journaltools" metal:fill-slot="journaltools">
         <div class="serial_logo">
             <img tal:attributes="src '/static/images/revistas/'+document.serial.acron+'/glogo.gif'" width="200px" />
         </div>
         <div class="serial_header">
-            <span tal:replace="document.serial.issn_type" i18n:translate="" /> version: <span tal:replace="document.serial.issn" />
+            <span tal:replace="document.serial.issn_type" /> version: <span tal:replace="document.serial.issn" />
         </div>
         <div class="box">
             <div class="title" i18n:translate="">Journal Tools</div>
@@ -34,7 +34,7 @@
         </div>
         <div class="spacer"></div>
         <div class="search">
-            <h2 class="sectionHeading">Search</h2>
+            <h2 class="sectionHeading" i18n:translate="">Search</h2>
             <form name="searchForm" action="http://www.scielo.br/cgi-bin/wxis.exe/iah/" method="post">
                 <input value="iah/iah.xis" name="IsisScript" type="hidden" />
                 <input value="i" name="lang" type="hidden" />
@@ -42,14 +42,14 @@
                 <input value="extSearch" name="nextAction" type="hidden" />
                 <input id="textEntry1" name="exprSearch" class="expression midium defaultValue" value="Enter one or more words" onfocus="clearDefault('textEntry1', 'expression midium'); this.value= (this.value=='Enter one or more words')? '' : this.value" onblur="clearDefault('textEntry1', 'expression midium defaultValue'); this.value= (this.value=='')? 'Enter one or more words' : this.value" type="text" />
                 <select class="inputText mini" name="indexSearch">
-                    <option selected="selected" value="^nTo^pTodos os índices^eTodos los indices^iAll indexes^d*^xTO ^yFULINV">All indexes</option>
-                    <option value="^nTi^pPalavras do título^ePalabras del título^iTitle words^xTI ^yPREINV^uTI_^mTI_">Title</option>
-                    <option value="^nAu^pAutor^eAutor^iAuthor^xAU ^yPREINV^uAU_^mAU_">Author</option>
-                    <option value="^nKw^pAssunto^eMateria^iSubject^xKW ^yPREINV^uKW_^mKW_">Subject</option>
+                    <option selected="selected" value="^nTo^pTodos os índices^eTodos los indices^iAll indexes^d*^xTO ^yFULINV" i18n:translate="">All indexes</option>
+                    <option value="^nTi^pPalavras do título^ePalabras del título^iTitle words^xTI ^yPREINV^uTI_^mTI_" i18n:translate="">Title</option>
+                    <option value="^nAu^pAutor^eAutor^iAuthor^xAU ^yPREINV^uAU_^mAU_" i18n:translate="">Author</option>
+                    <option value="^nKw^pAssunto^eMateria^iSubject^xKW ^yPREINV^uKW_^mKW_" i18n:translate="">Subject</option>
                 </select>
                 <select class="inputText mini" name="limit">
-                    <option value="0001-3714">This Journal</option>
-                    <option value="">All Collection</option>
+                    <option value="0001-3714" i18n:translate="">This Journal</option>
+                    <option value="" i18n:translate="">All Collection</option>
                 </select>
                 <input value="Search" name="submit" class="submit" type="submit" />
             </form>

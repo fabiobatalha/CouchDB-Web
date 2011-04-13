@@ -49,6 +49,9 @@ A:HOVER {
     margin-bottom: 20px;
     font-size: 12px;
     background-color: #F4F4F4;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFF', endColorstr='#F0F0F0'); /* for IE */
+    background: -webkit-gradient(linear, left top, left bottom, from(#FFFFFF), to(#F0F0F0)); /* for webkit browsers */
+    background: -moz-linear-gradient(top,  #FFFFFF,  #F0F0F0); /* for firefox 3.6+ */ 
 }
 
 .box .title {
@@ -60,13 +63,15 @@ A:HOVER {
 }
 
 .box ul {
-    padding-left: 10px;    
+    padding-left: 0px;
+    margin: 0px;
 }
 
 .box li {
     list-style: none;
     font-size: 12px;
-    padding-bottom: 10px;
+    padding: 5px;
+    border-bottom: dashed 1px #AAAAAA;    
 }
 
 .content {
@@ -104,9 +109,7 @@ A:HOVER {
 
 .middle .navegation {
     margin-bottom: 60px;
-    width: 400px;
-    margin-left:auto;
-    margin-right:auto;
+    width: 600px;
 }
 
 .middle .navegation .title {
@@ -168,6 +171,25 @@ A:HOVER {
     font-weight: bold;
 }
 
+.highlights ul {
+    padding: 0px;
+    margin: 0px;
+}
+
+.highlights ul li{
+    list-style: none;
+    padding: 5px;
+    border-bottom: dashed 1px #AAAAAA;
+}
+
+.highlights ul .even{
+    background-color: #EEEEEE;
+}
+
+
+.highlights ul .odd{
+    background-color: #E4E4E4;
+}
 .spacer {
     clear: both;
 }
@@ -261,7 +283,7 @@ A:HOVER {
 
 .search {
     background-color: #EEEEEE;
-    width: 500px;
+    width: 600px;
     margin-left:auto;
     margin-right:auto;
     padding: 10px;

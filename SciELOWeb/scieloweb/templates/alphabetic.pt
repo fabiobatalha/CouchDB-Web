@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <p metal:use-macro="main.macros['master']">
-    <div class="middle" metal:fill-slot="middle">
+    <div class="middle" metal:fill-slot="middle" i18n:domain="SciELOWeb">
         <div class="search">
             <h2 class="sectionHeading">Search</h2>
             <form name="searchForm" action="http://www.scielo.br/cgi-bin/wxis.exe/iah/" method="post">

@@ -21,7 +21,6 @@ def set_language(request):
         resp.headers = {'Location': request.referrer}
         resp.status = '302'
         resp.set_cookie('language', local_name)
-        a =b
         return resp
     else:
         return HTTPInternalServerError()
@@ -96,14 +95,15 @@ def sci_serial(request):
     pidval = request.matchdict['pid']
     issn_newtitle = ''
     new_title = ''
-    
+    articles_dict_arr = []
+
     query1 = urllib2.urlopen(settings_app.COUCHDB_VIEWS["sci_serial"].format(pid=pidval))
-    query2 = urllib2.urlopen(settings_app.COUCHDB_QUERIES["journal_pressreleases"].format(pid=pidval,brac="{}"))
+    query2 = urllib2.urlopen(settings_app.COUCHDB_QUERIES["journal_pressreleases"].format(pid=pidval,brac="{}",lang=locale_name))
     query3 = urllib2.urlopen(settings_app.COUCHDB_QUERIES["journal_lastarticles"].format(pid=pidval,brac="{}"))
     
     serialjson = json.loads(query1.read());
     pressreleasesjson = json.loads(query2.read());
-    lastarticlesjson  = json.loads(query3.read());
+    articlejson  = json.loads(query3.read());
     
     if serialjson['rows'][0]['doc'].has_key('v400'):
         issn_newtitle = serialjson['rows'][0]['doc']['v400'][0]['_']
@@ -123,9 +123,158 @@ def sci_serial(request):
                 "newtitle": new_title
     }
     
+    # Creating article dict just with the relevant data for serial page
+    articles = {}
+    for rows in articlejson['rows']:
+        has_abstract = False
+        authors_arr = []
+        abstract_translated = ""
+        title_translated = ""
+        authors_dict = []
+        pid = rows['doc']['v880'][0]['_']
+            
+        if rows['doc'].has_key('v40'):  #Article Default language
+            article_default_language = rows['doc']['v40'][0]['_']
+        
+        if rows['doc'].has_key('v83'):  #Abstract
+            abstracts = rows['doc']['v83']
+            
+            abstracts_dict = {}
+            for abstract in abstracts:
+                if abstracts_dict.has_key(abstract['l']):
+                    abstracts_dict[abstract['l']] = abstract['a']
+                else:
+                    abstracts_dict[abstract['l']] = ''
+                    abstracts_dict[abstract['l']] = abstract['a']
+            
+            # getting abstract according to language
+            if abstracts_dict.has_key(locale_name):
+                abstract_translated = abstracts_dict[locale_name]
+            elif abstracts_dict.has_key(settings.default_locale_name):
+                abstract_translated = abstracts_dict[settings.default_locale_name]
+            else:
+                abstract_translated = abstracts_dict[article_default_language]
+    
+        if rows['doc'].has_key('v10'): #Authors
+            authors = rows['doc']['v10']
+            authors_dict = []
+            name = ''
+            surname = ''
+            
+            for author in authors:
+                if author.has_key('n'):
+                    name = author['n']
+                    
+                if author.has_key('s'):
+                    surname = author['s']
+                    
+                authors_dict.append({"surname": surname,"name": name })
+    
+        if rows['doc'].has_key('v12'):
+            titles = rows['doc']['v12']
+            
+            titles_dict = {}
+            for title in titles:
+                if titles_dict.has_key(title['l']):
+                    titles_dict[title['l']] = title['_']
+                else:
+                    titles_dict[title['l']] = ''
+                    titles_dict[title['l']] = title['_']
+    
+            # getting title according to language
+            if titles_dict.has_key(locale_name):
+                title_translated = titles_dict[locale_name]
+            elif titles_dict.has_key(settings.default_locale_name):
+                title_translated = titles_dict[settings.default_locale_name]
+            else:
+                title_translated = titles_dict[article_default_language]
+                       
+            article = { "pid": pid,
+                        "abstract": abstract_translated,
+                        "authors": authors_dict,
+                        "title": title_translated,
+                        "doi": settings_app.WS_CONFIG['identity']['doi_prefix']+'/'+pid
+            }
+            articles_dict_arr.append(article)
+            
+    # Creating pressrelases dict just with the relevant data for serial page
+    pressrelases = {}
+    pressrelases_dict_arr = []
+    for rows in pressreleasesjson['rows']:
+        has_abstract = False
+        authors_arr = []
+        abstract_translated = ""
+        title_translated = ""
+        authors_dict = []
+        pid = rows['doc']['v880'][0]['_']
+            
+        if rows['doc'].has_key('v40'):  #Article Default language
+            article_default_language = rows['doc']['v40'][0]['_']
+        
+        if rows['doc'].has_key('v83'):  #Abstract
+            abstracts = rows['doc']['v83']
+            
+            abstracts_dict = {}
+            for abstract in abstracts:
+                if abstracts_dict.has_key(abstract['l']):
+                    abstracts_dict[abstract['l']] = abstract['a']
+                else:
+                    abstracts_dict[abstract['l']] = ''
+                    abstracts_dict[abstract['l']] = abstract['a']
+            
+            # getting abstract according to language
+            if abstracts_dict.has_key(locale_name):
+                abstract_translated = abstracts_dict[locale_name]
+            elif abstracts_dict.has_key(settings.default_locale_name):
+                abstract_translated = abstracts_dict[settings.default_locale_name]
+            else:
+                abstract_translated = abstracts_dict[article_default_language]
+    
+        if rows['doc'].has_key('v10'): #Authors
+            authors = rows['doc']['v10']
+            authors_dict = []
+            name = ''
+            surname = ''
+            
+            for author in authors:
+                if author.has_key('n'):
+                    name = author['n']
+                    
+                if author.has_key('s'):
+                    surname = author['s']
+                    
+                authors_dict.append({"surname": surname,"name": name })
+    
+        if rows['doc'].has_key('v12'):
+            titles = rows['doc']['v12']
+            
+            titles_dict = {}
+            for title in titles:
+                if titles_dict.has_key(title['l']):
+                    titles_dict[title['l']] = title['_']
+                else:
+                    titles_dict[title['l']] = ''
+                    titles_dict[title['l']] = title['_']
+    
+            # getting title according to language
+            if titles_dict.has_key(locale_name):
+                title_translated = titles_dict[locale_name]
+            elif titles_dict.has_key(settings.default_locale_name):
+                title_translated = titles_dict[settings.default_locale_name]
+            else:
+                title_translated = titles_dict[article_default_language]
+                       
+            pressrelease = { "pid": pid,
+                        "abstract": abstract_translated,
+                        "authors": authors_dict,
+                        "title": title_translated,
+                        "doi": settings_app.WS_CONFIG['identity']['doi_prefix']+'/'+pid
+            }
+            pressrelases_dict_arr.append(pressrelease)
+
     document = { "serial": serial,
-                 "pressreleases": pressreleasesjson,
-                 "lastarticles": lastarticlesjson
+                 "pressreleases": pressrelases_dict_arr,
+                 "lastarticles": articles_dict_arr
     }
     
     main = get_renderer('scieloweb:templates/base.pt').implementation()
@@ -355,10 +504,16 @@ def sci_issuetoc(request):
             
         articles[pid] = { "pid": pid,
                    "title": title_translated,
-               "authors": authors_arr,
-               "section": section,
-               "has_abstract": has_abstract
-               }
+                   "authors": authors_arr,
+                   "section": section,
+                   "has_abstract": has_abstract
+                   }
+                   
+    articles_dict_arr = []
+    sorted_sections_dc = {}
+    sorted_sections_ls = []
+    for article in sorted(articles.iterkeys()):
+       articles_dict_arr.append(articles[article])
 
     articles_dict_arr = []
     sorted_sections_dc = {}

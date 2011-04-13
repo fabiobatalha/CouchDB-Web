@@ -1,5 +1,5 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<p metal:use-macro="main.macros['master']">
+<p metal:use-macro="main.macros['master']" i18n:domain="SciELOWeb">
     <div class="journaltools" metal:fill-slot="journaltools">
         <div class="serial_logo">
             <img tal:attributes="src '/static/images/revistas/'+document.serial.acron+'/glogo.gif'" width="200px" />
@@ -8,33 +8,33 @@
             <span tal:replace="document.serial.issn_type" /> version: <span tal:replace="document.serial.issn" />
         </div>
         <div class="box">
-            <div class="title">Journal Tools</div>
+            <div class="title" i18n:translate="">Journal Tools</div>
             <ul>
-                <li><a href="#" tal:attributes="href '/sci_serial/'+document.serial.issn">journal home</a></li>
-                <li><a href="#">about the journal</a></li>
-                <li><a href="#">editorial board</a></li>
-                <li><a href="#">instructions to authors</a></li>
-                <li><a href="#">subscription</a></li>
-                <li><a href="#">statistics</a></li>
-                <li><a href="#">submission on-line</a></li>
+                <li><a href="#" tal:attributes="href '/sci_serial/'+document.serial.issn" i18n:translate="">journal home</a></li>
+                <li><a href="#" i18n:translate="">about the journal</a></li>
+                <li><a href="#" i18n:translate="">editorial board</a></li>
+                <li><a href="#" i18n:translate="">instructions to authors</a></li>
+                <li><a href="#" i18n:translate="">subscription</a></li>
+                <li><a href="#" i18n:translate="">statistics</a></li>
+                <li><a href="#" i18n:translate="">submission on-line</a></li>
             </ul>
         </div>
     </div>    
     <div class="middle" metal:fill-slot="middle">
         <div class="navegation">
-            <div class="title">issues list</div>
+            <div class="title" i18n:translate="">issues list</div>
             <div class="options">
                 <ul>
-                    <li><a href="#" tal:attributes="href '/sci_issues/'+document.serial.pid">all</a></li>
-                    <li><a href="#">previous</a></li>
-                    <li><a href="#">current</a></li>
-                    <li><a href="#">next</a></li>
+                    <li><a href="#" tal:attributes="href '/sci_issues/'+document.serial.pid" i18n:translate="">all</a></li>
+                    <li><a href="#" i18n:translate="">previous</a></li>
+                    <li><a href="#" i18n:translate="">current</a></li>
+                    <li><a href="#" i18n:translate="">next</a></li>
                 </ul>
             </div>
         </div>
         <div class="spacer"></div>
         <div class="search">
-            <h2 class="sectionHeading">Search</h2>
+            <h2 class="sectionHeading" i18n:translate="">Search</h2>
             <form name="searchForm" action="http://www.scielo.br/cgi-bin/wxis.exe/iah/" method="post">
                 <input value="iah/iah.xis" name="IsisScript" type="hidden" />
                 <input value="i" name="lang" type="hidden" />
@@ -42,14 +42,14 @@
                 <input value="extSearch" name="nextAction" type="hidden" />
                 <input id="textEntry1" name="exprSearch" class="expression midium defaultValue" value="Enter one or more words" onfocus="clearDefault('textEntry1', 'expression midium'); this.value= (this.value=='Enter one or more words')? '' : this.value" onblur="clearDefault('textEntry1', 'expression midium defaultValue'); this.value= (this.value=='')? 'Enter one or more words' : this.value" type="text" />
                 <select class="inputText mini" name="indexSearch">
-                    <option selected="selected" value="^nTo^pTodos os índices^eTodos los indices^iAll indexes^d*^xTO ^yFULINV">All indexes</option>
-                    <option value="^nTi^pPalavras do título^ePalabras del título^iTitle words^xTI ^yPREINV^uTI_^mTI_">Title</option>
-                    <option value="^nAu^pAutor^eAutor^iAuthor^xAU ^yPREINV^uAU_^mAU_">Author</option>
-                    <option value="^nKw^pAssunto^eMateria^iSubject^xKW ^yPREINV^uKW_^mKW_">Subject</option>
+                    <option selected="selected" value="^nTo^pTodos os índices^eTodos los indices^iAll indexes^d*^xTO ^yFULINV" i18n:translate="">All indexes</option>
+                    <option value="^nTi^pPalavras do título^ePalabras del título^iTitle words^xTI ^yPREINV^uTI_^mTI_" i18n:translate="">Title</option>
+                    <option value="^nAu^pAutor^eAutor^iAuthor^xAU ^yPREINV^uAU_^mAU_" i18n:translate="">Author</option>
+                    <option value="^nKw^pAssunto^eMateria^iSubject^xKW ^yPREINV^uKW_^mKW_" i18n:translate="">Subject</option>
                 </select>
                 <select class="inputText mini" name="limit">
-                    <option value="0001-3714">This Journal</option>
-                    <option value="">All Collection</option>
+                    <option value="0001-3714" i18n:translate="">This Journal</option>
+                    <option value="" i18n:translate="">All Collection</option>
                 </select>
                 <input value="Search" name="submit" class="submit" type="submit" />
             </form>
@@ -63,16 +63,16 @@
                 <div class="spacer"></div>
                 <div class="doi" tal:content="'doi: '+document.article.doi" />
                 <div class="spacer"></div>
-                <h2>Abstract</h2>
+                <h2 i18n:translate="">Abstract</h2>
                 <span tal:content="document.article.abstract" />
-                <h2>Keywords</h2>
+                <h2 i18n:translate="">Keywords</h2>
                 <ul tal:repeat="keyword document.article.keywords">
                     <li tal:content="keyword"></li>
                 </ul>
                 <div class="spacer"></div>
                 <ul class="options_list">
-                    <li><a href="#" tal:attributes="href '/sci_arttext/'+document.article.pid">full text</a></li>
-                    <li><a href="#" tal:attributes="href '/sci_pdf/'+document.article.pid">pdf</a></li>
+                    <li><a href="#" tal:attributes="href '/sci_arttext/'+document.article.pid" i18n:translate="">full text</a></li>
+                    <li><a href="#" tal:attributes="href '/sci_pdf/'+document.article.pid" i18n:translate="">pdf</a></li>
                 </ul>
                 <div class="spacer"></div>
             </div>

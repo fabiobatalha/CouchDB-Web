@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SciELOWeb 0.0\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2011-04-06 17:19-0300\n"
+"POT-Creation-Date: 2011-04-12 12:06-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -77,6 +77,147 @@ msgstr ""
 msgid "Services on Demand"
 msgstr ""
 
+#: scieloweb/templates/abstract.pt:75 scieloweb/templates/issuetoc.pt:75
+msgid "pdf"
+msgstr ""
+
+#: scieloweb/templates/abstract.pt:74 scieloweb/templates/issuetoc.pt:74
+msgid "full text"
+msgstr ""
+
+#: scieloweb/templates/abstract.pt:68 scieloweb/templates/arttext.pt:68
+msgid "Keywords"
+msgstr ""
+
+#: scieloweb/templates/abstract.pt:66 scieloweb/templates/arttext.pt:66
+msgid "Abstract"
+msgstr ""
+
+#: scieloweb/templates/abstract.pt:52 scieloweb/templates/alphabetic.pt:20
+#: scieloweb/templates/arttext.pt:52 scieloweb/templates/home.pt:20
+#: scieloweb/templates/issues.pt:52 scieloweb/templates/issuetoc.pt:52
+#: scieloweb/templates/serial.pt:52
+msgid "All Collection"
+msgstr ""
+
+#: scieloweb/templates/abstract.pt:51 scieloweb/templates/alphabetic.pt:19
+#: scieloweb/templates/arttext.pt:51 scieloweb/templates/home.pt:19
+#: scieloweb/templates/issues.pt:51 scieloweb/templates/issuetoc.pt:51
+#: scieloweb/templates/serial.pt:51
+msgid "This Journal"
+msgstr ""
+
+#: scieloweb/templates/abstract.pt:48 scieloweb/templates/alphabetic.pt:16
+#: scieloweb/templates/arttext.pt:48 scieloweb/templates/home.pt:16
+#: scieloweb/templates/issues.pt:48 scieloweb/templates/issuetoc.pt:48
+#: scieloweb/templates/serial.pt:48
+msgid "Subject"
+msgstr ""
+
+#: scieloweb/templates/abstract.pt:47 scieloweb/templates/alphabetic.pt:15
+#: scieloweb/templates/arttext.pt:47 scieloweb/templates/home.pt:15
+#: scieloweb/templates/issues.pt:47 scieloweb/templates/issuetoc.pt:47
+#: scieloweb/templates/serial.pt:47
+msgid "Author"
+msgstr ""
+
+#: scieloweb/templates/abstract.pt:46 scieloweb/templates/alphabetic.pt:14
+#: scieloweb/templates/arttext.pt:46 scieloweb/templates/home.pt:14
+#: scieloweb/templates/issues.pt:46 scieloweb/templates/issuetoc.pt:46
+#: scieloweb/templates/serial.pt:46
+msgid "Title"
+msgstr ""
+
+#: scieloweb/templates/abstract.pt:45 scieloweb/templates/alphabetic.pt:13
+#: scieloweb/templates/arttext.pt:45 scieloweb/templates/home.pt:13
+#: scieloweb/templates/issues.pt:45 scieloweb/templates/issuetoc.pt:45
+#: scieloweb/templates/serial.pt:45
+msgid "All indexes"
+msgstr ""
+
+#: scieloweb/templates/abstract.pt:37 scieloweb/templates/arttext.pt:37
+#: scieloweb/templates/home.pt:5 scieloweb/templates/issues.pt:37
+#: scieloweb/templates/issuetoc.pt:37 scieloweb/templates/serial.pt:37
+msgid "Search"
+msgstr ""
+
+#: scieloweb/templates/abstract.pt:31 scieloweb/templates/arttext.pt:31
+#: scieloweb/templates/issues.pt:31 scieloweb/templates/issuetoc.pt:31
+#: scieloweb/templates/serial.pt:31
+msgid "next"
+msgstr ""
+
+#: scieloweb/templates/abstract.pt:30 scieloweb/templates/arttext.pt:30
+#: scieloweb/templates/issues.pt:30 scieloweb/templates/issuetoc.pt:30
+#: scieloweb/templates/serial.pt:30
+msgid "current"
+msgstr ""
+
+#: scieloweb/templates/abstract.pt:29 scieloweb/templates/arttext.pt:29
+#: scieloweb/templates/issues.pt:29 scieloweb/templates/issuetoc.pt:29
+#: scieloweb/templates/serial.pt:29
+msgid "previous"
+msgstr ""
+
+#: scieloweb/templates/abstract.pt:28 scieloweb/templates/arttext.pt:28
+#: scieloweb/templates/issues.pt:28 scieloweb/templates/issuetoc.pt:28
+#: scieloweb/templates/serial.pt:28
+msgid "all"
+msgstr ""
+
+#: scieloweb/templates/abstract.pt:25 scieloweb/templates/arttext.pt:25
+#: scieloweb/templates/issues.pt:25 scieloweb/templates/serial.pt:25
+msgid "issues list"
+msgstr ""
+
+#: scieloweb/templates/abstract.pt:19 scieloweb/templates/arttext.pt:19
+#: scieloweb/templates/issues.pt:19 scieloweb/templates/issuetoc.pt:19
+#: scieloweb/templates/serial.pt:19
+msgid "submission on-line"
+msgstr ""
+
+#: scieloweb/templates/abstract.pt:18 scieloweb/templates/arttext.pt:18
+#: scieloweb/templates/issues.pt:18 scieloweb/templates/issuetoc.pt:18
+#: scieloweb/templates/serial.pt:18
+msgid "statistics"
+msgstr ""
+
+#: scieloweb/templates/abstract.pt:17 scieloweb/templates/arttext.pt:17
+#: scieloweb/templates/issues.pt:17 scieloweb/templates/issuetoc.pt:17
+#: scieloweb/templates/serial.pt:17
+msgid "subscription"
+msgstr ""
+
+#: scieloweb/templates/abstract.pt:16 scieloweb/templates/arttext.pt:16
+#: scieloweb/templates/issues.pt:16 scieloweb/templates/issuetoc.pt:16
+#: scieloweb/templates/serial.pt:16
+msgid "instructions to authors"
+msgstr ""
+
+#: scieloweb/templates/abstract.pt:15 scieloweb/templates/arttext.pt:15
+#: scieloweb/templates/issues.pt:15 scieloweb/templates/issuetoc.pt:15
+#: scieloweb/templates/serial.pt:15
+msgid "editorial board"
+msgstr ""
+
+#: scieloweb/templates/abstract.pt:14 scieloweb/templates/arttext.pt:14
+#: scieloweb/templates/issues.pt:14 scieloweb/templates/issuetoc.pt:14
+#: scieloweb/templates/serial.pt:14
+msgid "about the journal"
+msgstr ""
+
+#: scieloweb/templates/abstract.pt:13 scieloweb/templates/arttext.pt:13
+#: scieloweb/templates/issues.pt:13 scieloweb/templates/issuetoc.pt:13
+#: scieloweb/templates/serial.pt:13
+msgid "journal home"
+msgstr ""
+
+#: scieloweb/templates/abstract.pt:11 scieloweb/templates/arttext.pt:11
+#: scieloweb/templates/issues.pt:11 scieloweb/templates/issuetoc.pt:11
+#: scieloweb/templates/serial.pt:11
+msgid "Journal Tools"
+msgstr ""
+
 #: scieloweb/templates/alphabetic.pt:29
 msgid "Non-Current Titles - serials"
 msgstr ""
@@ -85,164 +226,67 @@ msgstr ""
 msgid "Current Titles - serials"
 msgstr ""
 
-#: scieloweb/templates/alphabetic.pt:20 scieloweb/templates/home.pt:20
-#: scieloweb/templates/issues.pt:52
-msgid "All Collection"
-msgstr ""
-
-#: scieloweb/templates/alphabetic.pt:19 scieloweb/templates/home.pt:19
-#: scieloweb/templates/issues.pt:51
-msgid "This Journal"
-msgstr ""
-
-#: scieloweb/templates/alphabetic.pt:16 scieloweb/templates/home.pt:16
-#: scieloweb/templates/issues.pt:48
-msgid "Subject"
-msgstr ""
-
-#: scieloweb/templates/alphabetic.pt:15 scieloweb/templates/home.pt:15
-#: scieloweb/templates/issues.pt:47
-msgid "Author"
-msgstr ""
-
-#: scieloweb/templates/alphabetic.pt:14 scieloweb/templates/home.pt:14
-#: scieloweb/templates/issues.pt:46
-msgid "Title"
-msgstr ""
-
-#: scieloweb/templates/alphabetic.pt:13 scieloweb/templates/home.pt:13
-#: scieloweb/templates/issues.pt:45
-msgid "All indexes"
-msgstr ""
-
-#: scieloweb/templates/arttext.pt:68
-msgid "Keywords"
-msgstr ""
-
-#: scieloweb/templates/arttext.pt:66
-msgid "Abstract"
-msgstr ""
-
-#: scieloweb/templates/arttext.pt:31 scieloweb/templates/issues.pt:31
-msgid "next"
-msgstr ""
-
-#: scieloweb/templates/arttext.pt:30 scieloweb/templates/issues.pt:30
-msgid "current"
-msgstr ""
-
-#: scieloweb/templates/arttext.pt:29 scieloweb/templates/issues.pt:29
-msgid "previous"
-msgstr ""
-
-#: scieloweb/templates/arttext.pt:28 scieloweb/templates/issues.pt:28
-msgid "all"
-msgstr ""
-
-#: scieloweb/templates/arttext.pt:25 scieloweb/templates/issues.pt:25
-msgid "issues list"
-msgstr ""
-
-#: scieloweb/templates/arttext.pt:19 scieloweb/templates/issues.pt:19
-#: scieloweb/templates/issuetoc.pt:19
-msgid "submission on-line"
-msgstr ""
-
-#: scieloweb/templates/arttext.pt:18 scieloweb/templates/issues.pt:18
-#: scieloweb/templates/issuetoc.pt:18
-msgid "statistics"
-msgstr ""
-
-#: scieloweb/templates/arttext.pt:17 scieloweb/templates/issues.pt:17
-#: scieloweb/templates/issuetoc.pt:17
-msgid "subscription"
-msgstr ""
-
-#: scieloweb/templates/arttext.pt:16 scieloweb/templates/issues.pt:16
-#: scieloweb/templates/issuetoc.pt:16
-msgid "instructions to authors"
-msgstr ""
-
-#: scieloweb/templates/arttext.pt:15 scieloweb/templates/issues.pt:15
-#: scieloweb/templates/issuetoc.pt:15
-msgid "editorial board"
-msgstr ""
-
-#: scieloweb/templates/arttext.pt:14 scieloweb/templates/issues.pt:14
-#: scieloweb/templates/issuetoc.pt:14
-msgid "about the journal"
-msgstr ""
-
-#: scieloweb/templates/arttext.pt:13 scieloweb/templates/issuetoc.pt:13
-msgid "journal home"
-msgstr ""
-
-#: scieloweb/templates/arttext.pt:11 scieloweb/templates/issues.pt:11
-#: scieloweb/templates/issuetoc.pt:11
-msgid "Journal Tools"
-msgstr ""
-
-#: scieloweb/templates/base.pt:62
+#: scieloweb/templates/base.pt:63
 msgid "co-authors"
 msgstr ""
 
-#: scieloweb/templates/base.pt:61
+#: scieloweb/templates/base.pt:62
 msgid "journal citation"
 msgstr ""
 
-#: scieloweb/templates/base.pt:60
+#: scieloweb/templates/base.pt:61
 msgid "site usage"
 msgstr ""
 
-#: scieloweb/templates/base.pt:58
+#: scieloweb/templates/base.pt:59
 msgid "reports"
 msgstr ""
 
-#: scieloweb/templates/base.pt:54 scieloweb/templates/base.pt:46
+#: scieloweb/templates/base.pt:55 scieloweb/templates/base.pt:47
 msgid "search form"
 msgstr ""
 
-#: scieloweb/templates/base.pt:53
+#: scieloweb/templates/base.pt:54
 msgid "subject index"
 msgstr ""
 
-#: scieloweb/templates/base.pt:52
+#: scieloweb/templates/base.pt:53
 msgid "author index"
 msgstr ""
 
-#: scieloweb/templates/base.pt:50
+#: scieloweb/templates/base.pt:51
 msgid "article browsing"
 msgstr ""
 
-#: scieloweb/templates/base.pt:45
+#: scieloweb/templates/base.pt:46
 msgid "subject list"
 msgstr ""
 
-#: scieloweb/templates/base.pt:44
+#: scieloweb/templates/base.pt:45
 msgid "alphabetic list"
 msgstr ""
 
-#: scieloweb/templates/base.pt:42
+#: scieloweb/templates/base.pt:43
 msgid "serial browsing"
 msgstr ""
 
-#: scieloweb/templates/base.pt:33
+#: scieloweb/templates/base.pt:34
 msgid "team"
 msgstr ""
 
-#: scieloweb/templates/base.pt:32
+#: scieloweb/templates/base.pt:33
 msgid "about"
 msgstr ""
 
-#: scieloweb/templates/base.pt:31 scieloweb/templates/home.pt:39
+#: scieloweb/templates/base.pt:32 scieloweb/templates/home.pt:39
 msgid "help"
 msgstr ""
 
-#: scieloweb/templates/base.pt:30
+#: scieloweb/templates/base.pt:31
 msgid "journals evaluation"
 msgstr ""
 
-#: scieloweb/templates/base.pt:29
+#: scieloweb/templates/base.pt:30
 msgid "home"
 msgstr ""
 
@@ -259,10 +303,6 @@ msgstr ""
 msgid "SciELO"
 msgstr ""
 
-#: scieloweb/templates/home.pt:5 scieloweb/templates/issues.pt:37
-msgid "Search"
-msgstr ""
-
 #: scieloweb/templates/issues.pt:62
 msgid "Num"
 msgstr ""
@@ -277,5 +317,37 @@ msgstr ""
 
 #: scieloweb/templates/issues.pt:57
 msgid "Available Issues *"
+msgstr ""
+
+#: scieloweb/templates/issuetoc.pt:73
+msgid "abstract"
+msgstr ""
+
+#: scieloweb/templates/serial.pt:78
+msgid "Press Releases"
+msgstr ""
+
+#: scieloweb/templates/serial.pt:70
+msgid "Last Articles"
+msgstr ""
+
+#: scieloweb/templates/serial.pt:66
+msgid "Place: "
+msgstr ""
+
+#: scieloweb/templates/serial.pt:63
+msgid "New Title: "
+msgstr ""
+
+#: scieloweb/templates/serial.pt:60
+msgid "Mission: "
+msgstr ""
+
+#: scieloweb/templates/serial.pt:59
+msgid "version ISSN "
+msgstr ""
+
+#: scieloweb/templates/serial.pt:57
+msgid "Publication of:"
 msgstr ""
 
