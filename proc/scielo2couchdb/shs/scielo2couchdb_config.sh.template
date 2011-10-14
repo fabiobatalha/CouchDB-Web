@@ -1,0 +1,5 @@
+database_dir="/var/www/webservices/bases/"
+cisis_dir="/usr/local/bireme/cisis/5.5.pre02/linux/lindG4"
+couchdb_database="http://localhost:5984/scieloorg"
+bulk_size="10000"
+python26_path=/usr/bin/python2.6
