@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+    <channel>
+        <title>SciELO ORG RSS.</title>
+        <description>SciELO ORG Titles RSS</description>
+        <link>http://www.scielo.org/</link>
+        <image>
+            <url>http://www.scielo.br/img/scielobre.gif</url>
+            <title>SciELO</title>
+            <link>http://www.scielo.org</link>
+        </image>
+        {{#rows}}
+            <item>
+                <title>{{title}}</title>
+                <link>{{title_url}}</link>
+                <pubDate>{{insert_date}}</pubDate>
+            </item>
+        {{/rows}}
+    </channel>
+</rss>
