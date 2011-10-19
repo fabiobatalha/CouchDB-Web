@@ -1,6 +1,0 @@
-serial_dir="/bases/org.000/proc/scielo_webservices/proc/scielo2couchdbincrement/serial"
-input_dir="/bases/org.000/proc/scielo_webservices/proc/scielo2couchdbincrement/input"
-cisis_dir="/usr/local/bireme/cisis/5.6.alfa2/linux/lindG4"
-couchdb_url="http://admin:etahlohz@192.168.1.31:5984/"
-couchdb_database="scieloorg"
-bulk_size="10000"
